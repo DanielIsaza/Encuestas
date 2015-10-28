@@ -1,0 +1,27 @@
+body{
+	background: url("../img/header.jpg")  center center fixed;
+}
+h1{
+	margin:0 auto;
+	font-size:50px;
+}
+.encabezado{
+	width: 70%;
+	height: 20%;
+	margin-right: auto;
+	margin-left: auto;	
+	text-align:center;
+	margin-left: auto;
+	border: 2px solid black;
+	border-radius:50px;
+	/*background: url("../img/header.jpg");*/
+	background-color: white;
+	font-weight: bold;
+}
+.row{
+	margin-left: auto;
+	margin-right: auto;
+	/*background-color: #DCDCDC;*/
+	width: 70%;
+	height: 99%;
+}
