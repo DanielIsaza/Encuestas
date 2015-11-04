@@ -1,3 +1,4 @@
+<?php include("../controladores/PdfC.php"); ?>
 <!doctype>
 <!--vista principal del administrador-->
 <html>
@@ -26,7 +27,7 @@
     	<div class="row">
     		<form action="#" method="post">
     			<h2>Haga click aqu&iacute; para generar los reportes</h2>
-    			<button class="boton" type="submit" formaction="actaConcertacion.php">Generar reportes</button>
+    			<button class="boton" type="submit" onClick="crear()">Generar reportes</button>
     		</form>
 		</div>
 	</body>
