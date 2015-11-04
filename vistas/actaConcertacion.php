@@ -24,7 +24,7 @@
 		</header>
 		<!--division que contiene el segundo formulario-->
 		<div class="row">
-		<!--formulario-->
+		<!--formulario que contene las preguntas del acta de concertacion-->
 		<form action="#" method="post">
 			<!--preguntas-->
 			<h2>Responda SI o NO a las siguentes preguntas:</h2>
@@ -73,6 +73,7 @@
                	<textarea name="observaciones2" id="observaciones2" placeholder="Escriba sus observaciones" required></textarea>
 			</p>
 			<section class="contenedorCentrado">
+				<!--boton que finaliza el proceso para el usuario-->
 				<button class="boton" type="submit" formaction="#">Enviar</button>
 			</section>
 		</form>

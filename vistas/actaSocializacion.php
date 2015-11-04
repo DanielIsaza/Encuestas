@@ -24,7 +24,7 @@
 		</header>	
 			<!--division que contiene el formulario de la pagina-->
 			<div class="row">
-				<!--formulario-->
+				<!--formulario que contene las preguntas del acta de socializacion-->
 				<form action="#" method="post">
 					<!--datos personales del estudiante-->
 					<h2>Datos estudiante:</h2>
@@ -98,6 +98,7 @@
 					</p>
 					<!--seccion que contiene el boton para rediccionar la pagina-->
 					<section class="contenedorCentrado">
+						<!--boton que redirecciona al formulario acta de concertacion-->
 						<button class="boton" type="submit" formaction="actaConcertacion.php">Continuar</button>
 					</section>
 				</form>
