@@ -1,27 +1,78 @@
+/*Estilos para la aplicación*/
 body{
-	background: url("../img/header.jpg")  center center fixed;
+	/*Color fondo del cuerpo de las vistas*/
+	background: #f0f0f0;
 }
+/*letra tamañano h1*/
 h1{
 	margin:0 auto;
 	font-size:50px;
 }
+/*tamaño, borde, alineacion e imagen del encabezado*/
 .encabezado{
-	width: 70%;
-	height: 20%;
 	margin-right: auto;
 	margin-left: auto;	
 	text-align:center;
 	margin-left: auto;
 	border: 2px solid black;
 	border-radius:50px;
-	/*background: url("../img/header.jpg");*/
-	background-color: white;
+	background: url("../img/header.jpg");
+	/*background-color: white;*/
 	font-weight: bold;
 }
+/*seccion row*/
 .row{
 	margin-left: auto;
 	margin-right: auto;
-	/*background-color: #DCDCDC;*/
+	/*background-color: #C8C8C8;*/
 	width: 70%;
-	height: 99%;
+	height: auto;
 }
+/*estilos del formulario*/
+form {
+    margin-top: 21px;
+    padding-top: 22px;
+    border-top: 1px solid #d7d7d7;
+}
+	form p {
+        color: #585858;
+    }
+		form label {
+            display: table-cell;
+            /*width: 140px;*/
+            padding-right: 20px;
+            text-align: right;
+            font-weight: bold;
+            vertical-align: top;
+        }
+    
+    	form input[type="text"], form input[type="email"], form input[type="url"] {
+        	display: table-cell;
+       		width: 300px;
+        	height: 20px;
+        	border: 1px solid #d7d7d7;
+        }
+        
+    	form textarea {
+        	width: 65%;
+        	height: 25%;
+        	border: 1px solid #d7d7d7;
+        }
+        
+    	form input[type="submit"] {
+        	margin-left: 162px;
+        }
+/*section contenedorCentrado*/
+.contenedorCentrado{
+	text-align: center;
+
+}
+	/*.boton{
+		padding: 2%;
+		margin-right: auto;
+		margin-left: auto;	
+		text-align:center;
+		margin-left: auto;
+		border: 2px solid black;
+		border-radius:50px;
+	}*/
