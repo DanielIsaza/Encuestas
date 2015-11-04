@@ -2,6 +2,7 @@
 body{
 	/*Color fondo del cuerpo de las vistas*/
 	background: #f0f0f0;
+	text-align: center;
 }
 /*letra tamañano h1*/
 h1{
@@ -11,28 +12,36 @@ h1{
 /*tamaño, borde, alineacion e imagen del encabezado*/
 .encabezado{
 	margin-right: auto;
-	margin-left: auto;	
+	margin-left: auto;
+	/*width:70%;*/
 	text-align:center;
 	margin-left: auto;
 	border: 2px solid black;
-	border-radius:50px;
+	/*border-radius:50px;*/
 	background: url("../img/header.jpg");
-	/*background-color: white;*/
 	font-weight: bold;
 }
 /*seccion row*/
 .row{
 	margin-left: auto;
 	margin-right: auto;
-	/*background-color: #C8C8C8;*/
+	/*background-color: #f0f0f0;*/
 	width: 70%;
+	height: auto;
+	text-align: left;
+}
+.contenedor{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 60%;
 	height: auto;
 }
 
 /*estilos del formulario*/
 form {
     margin-top: 21px;
-    padding-top: 22px;
+    padding-top: 1%;
     border-top: 1px solid #d7d7d7;
     text-align: left;
 }
@@ -64,6 +73,34 @@ form {
     	form input[type="submit"] {
         	margin-left: 162px;
         }
+        form select{
+        	width: 50%;
+        	font-size: 15px;
+			border-radius:10px;
+        }
+        form button{
+        	background: #007907;
+        	width: 20%;
+        	height: 9%;
+
+        }
+        #nombre{
+        	width: 50%;
+        	height: 5%;
+        	font-size: 15px;
+			border-radius:10px;
+        }
+        #codigo{
+        	width: 50%;
+        	height: 5%;
+        	font-size: 15px;
+			border-radius:10px;
+        }
+#firstChoice, #secondChoice, #thirdChoice {
+	font-size: 15px;
+	border-radius:10px;
+}
+
 /*section contenedorCentrado*/
 .contenedorCentrado{
 	text-align: center;

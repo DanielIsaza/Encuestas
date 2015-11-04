@@ -8,10 +8,14 @@
 		<title>Administrador</title>
 		<!--JQuery-->
 		<script src="//code.jquery.com/jquery-2.1.3.js"></script>
-		<!--JavaScript-->
+		<!-- JavaScript-->
 		<script type="./main.js"></script>
+		<script src="../js/modernizr.js"></script>
 		<!--CSS-->
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
+		<!--foundation-->
+        <link rel="stylesheet" href="../css/foundation.css">
+	</head>
 	</head>
 	<!--cuerpo de la pagina-->
 	<body>
@@ -19,7 +23,7 @@
 		<header>
 			<!-- división que contiene el encabezado de la pagina-->
 			<div class="encabezado">
-				<h1>Programa CIDBA</h1>
+				<h1><B>Programa CIDBA</B></h1>
 				<h2>Bienvenido administrador</h2>
 			</div>
 		</header>
