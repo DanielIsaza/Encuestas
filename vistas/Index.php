@@ -49,15 +49,15 @@
     			var arrGrupos = new Array();
     			var arrGruposGrp = new Array();
 
-    			arrGrupos[0]="Grupo 1";
-    			arrGruposGrp[0]=1;
-    			arrGrupos[1]="Grupo 2";
-    			arrGruposGrp[1]=1;
+    			arrGrupos[60]="Grupo 1";
+    			arrGruposGrp[60]=0;
+    			arrGrupos[61]="Grupo 2";
+    			arrGruposGrp[61]=0;
 
-    			arrGrupos[2]="Grupo 1";
-    			arrGruposGrp[2]=2;
-    			arrGrupos[3]="Grupo 2";
-    			arrGruposGrp[3]=2;
+    			arrGrupos[62]="Grupo 1";
+    			arrGruposGrp[62]=4;
+    			arrGrupos[63]="Grupo 2";
+    			arrGruposGrp[63]=4;
 
 
     			/*metodo*/
@@ -88,11 +88,11 @@
 
     			}
     		</SCRIPT>
-    		<form name= myChoices>
+    		<form name= myChoices method="post" action="">
     			<table aling="center">
     				<tr>
     					<td>
-    						<select id=firstChoice name="firstChoice onchange"="selectChange(this, myChoices.secondChoice, arrMaterias, arrMateriasGrp);">
+    						<select id=firstChoice name="firstChoice" onchange="selectChange(this, myChoices.secondChoice, arrMaterias, arrMateriasGrp);">
 								<option value=0 SELECTED>[Selecciona]</option>
 								<option value=1>Semestre 1</option>
 								<option value=2>Semestre 2</option>
@@ -100,7 +100,7 @@
 							</select>
     					</td><td>
 
-						<select id=secondChoice name="secondChoice onchange"="selectChange(this, myChoices.thirdChoice, arrGrupos, arrGruposGrp);">
+						<select id=secondChoice name="secondChoice" onchange="selectChange(this, myChoices.thirdChoice, arrGrupos, arrGruposGrp);">
 						</select>
 						<select id=thirdChoice name="thirdChoice">
 						</select>
