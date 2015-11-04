@@ -24,9 +24,68 @@
 		</header>
 		<!-- división que contiene la lista despegable de la pagina-->
     	<div class="row">
-    		<h2>><a href="#">Plan curricular</h2></a>
+    		<!--Script para listas dependientes, semestres-> materias->grupos-->
+    		<SCRIPT LANGUAJE="JavaScript">
+    			/*arreglos para materias y sus respectivos items*/
+    			var arrMaterias = new Array();
+    			var arrMateriasGrp = new Array();
+
+    			/*Se llenan los arreglos*/
+    			arrMaterias[0]="Metodologia y estrategias de la modalidad";
+    			arrMateriasGrp[0] = 1;
+    			arrMaterias[1]="Expresion oral y escrita";
+    			arrMateriasGrp[1]= 1;
+
+    			arrMaterias[2]="Proficiencia en español";
+    			arrMateriasGrp[2]=2;
+    			arrMaterias[3]="redaccion";
+    			arrMateriasGrp[3]=2;
+
+    			arrMaterias[4]="Semiotica";
+    			arrMateriasGrp[4]=3;
+    			
+    			/*se llenan los arreglos para los grupos*/
+    			var arrGrupos = new Array();
+    			var arrGruposGrp = new Array();
+
+    			/*metodo*/
+    			function selectChange(control, controlToPopulate, ItemArray, GroupArray)
+    			{
+    				var eleccion;
+    				var x;
+
+    				for (var q=controlToPopulate.options.length;q>=0;q--) controlToPopulate.options[q]=null;
+  						if (control.name == "firstChoice") 
+  					{
+    					for (var q=myChoices.thirdChoice.options.length;q>=0;q--) myChoices.thirdChoice.options[q] = null;
+ 					}
+ 					myEle = document.createElement("option") ;
+  					myEle.value = 0 ;
+  					myEle.text = "[Selecciona]" ;
+  					controlToPopulate.add(myEle) ;
+  					for ( x = 0 ; x < ItemArray.length  ; x++ )
+   					{
+     					if ( GroupArray[x] == control.value )
+       					{
+         					myEle = document.createElement("option") ;
+         					myEle.value = x ;
+        					myEle.text = ItemArray[x] ;
+        					controlToPopulate.add(myEle) ;
+       					}
+    				}
+
+    			}
+    		</SCRIPT>
+    		<SELECT id=firstChoice name=firstChoice onchange="selectChange(this, myChoices.secondChoice, arrMaterias, arrMateriasGrp);">
+				<option value=0 SELECTED>[Selecciona]</option>
+				<option value=1>Semestre 1</option>
+				<option value=2>Semestre 2</option>
+				<option value=3>Semestre 3</option>
+			</SELECT>
+
+    		<!--<h2>><a href="#">Plan curricular</h2></a>
     		<h2>..><a href="#">Semestre I</h2></a>
-    		<h2>....><a href="#">Materia 1</h2></a>
+    		<h2>....><a href="#">Materia 1</h2></a>-->
     	</div>
 	</body>
 </html>
