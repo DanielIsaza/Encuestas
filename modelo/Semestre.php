@@ -21,4 +21,25 @@ Class Semestre extends Modelo
 		$idPlanEstudio = 0;
 		$nombreSemestre = "";
 	}
+	/**
+	* Lista de semestres 
+	*/
+	function listaSemestres()
+	{
+		$sql = "SELECT idSemestre,nombreSemestre 
+					FROM semestre";
+        $consulta = $this->query($sql);
+         $datos = array();
+
+        $i=0;
+        while($dato = $consulta->fetch_array())
+        {
+        	$datos[$i] = array();
+        	$datos[$i]['id'] = $dato['idSemestre'];
+        	$datos[$i]['nombre'] = $dato['nombreSemestre'];
+        	$i++;
+        }
+
+        return $datos;
+	}
 }
