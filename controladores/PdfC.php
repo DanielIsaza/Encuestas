@@ -43,11 +43,9 @@ function crear()
 	$pdf->AliasNbPages();
 	$pdf->AddPage();
 	$pdf->SetFont('Times','',12);
-	//for($i=1;$i<=10;$i++)
-	  //  $pdf->Cell(0,10,'Printing line number '.$i,0,1);
-	//$pdf->Image('../img/pastel.png');
+	$pdf->SetX(30);
 	$pdf->Cell(0,10,'Mira mi oshita algo ashi seria el reporte de PDF con las graficas',0,1);
-	//$pdf->Image($nombreImagen, $pdf->GetX() + 140, $pdf->GetY() - 25, 40, 30);
+	$pdf->Ln(6);
 	$pdf->Cell("", "", $pdf->Image('../img/temp/grafico.png', $pdf->GetX()+33,$pdf->GetY()),'LR',0,'R');
 	//$pdf->Output('reporte1.pdf','D');
 	$pdf->Output();
