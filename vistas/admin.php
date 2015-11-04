@@ -27,7 +27,7 @@
     	<div class="row">
     		<form action="#" method="post">
     			<h2>Haga click aqu&iacute; para generar los reportes</h2>
-    			<button class="boton" type="submit" onClick="crear()">Generar reportes</button>
+    			<button class="boton" name="hola" type="submit" >Generar reportes</button>
     		</form>
 		</div>
 	</body>
