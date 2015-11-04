@@ -29,8 +29,8 @@
 			<!--preguntas-->
 			<h2>Responda SI o NO a las siguentes preguntas:</h2>
 			<p>
-				<label for="pregunta7">¿El profesor ha cumplido con la atención de asesorías e inquietudes 
-					en los tiempos establecidos en el microcurriculo?<br><br></label>
+				<label for="pregunta7">&#191;El profesor ha cumplido con la atenci&acute;n de asesor&iacute;as e inquietudes 
+					en los tiempos establecidos en el microcurriculo&#63;<br><br></label>
 				<select id="pregunta7" name="pregunta7" required>
 					<option value="" selected="selected">- selecciona -</option>
 					<option value="1">SI</option>
@@ -38,8 +38,8 @@
 				</select>
 			</p> 
 			<p>
-				<label for="pregunta8">¿El profesor ha cumplido con la apertura de las actividades y 
-					los recursos según lo establecido en el cronograma <br> del espacio académico?<br><br></label>
+				<label for="pregunta8">&#191;El profesor ha cumplido con la apertura de las actividades y 
+					los recursos seg&uacute;n lo establecido en el cronograma <br> del espacio acad&eacute;mico&#63;<br><br></label>
 				<select>
 					<option value="">- selecciona -</option>
 					<option value="1">SI</option>
@@ -47,8 +47,8 @@
 				</select>
 			</p>
 			<p>
-				<label for="pregunta9">¿El profesor ha dispuesto los recursos apropiados para desarrollar 
-					los contenidos del espacio académico?<br><br></label>
+				<label for="pregunta9">&#191;El profesor ha dispuesto los recursos apropiados para desarrollar 
+					los contenidos del espacio acad&eacute;mico&#63;<br><br></label>
 				<select id="pregunta9" name="pregunta9" required>
 					<option value="" selected="selected">- selecciona -</option>
 					<option value="1">SI</option>
@@ -56,9 +56,9 @@
 				</select>
 			</p>
 			<p>
-				<label for="pregunta10">¿El profesor ha publicado en el libro de calificaciones de la plataforma, 
-					la evaluación y retroalimentación <br>a las actividades de los estudiantes, en los tiempos 
-					establecidos en el Estatuto Estudiantil?<br><br></label>
+				<label for="pregunta10">&#191;El profesor ha publicado en el libro de calificaciones de la plataforma, 
+					la evaluaci&oacute;n y retroalimentaci&oacute;n <br>a las actividades de los estudiantes, en los tiempos 
+					establecidos en el Estatuto Estudiantil&#63;<br><br></label>
 				<select id="pregunta10" name="pregunta10" required>
 					<option value="" selected="selected">- selecciona -</option>
 					<option value="1">SI</option>
