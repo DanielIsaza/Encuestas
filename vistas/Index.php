@@ -24,13 +24,14 @@
 		</header>
 		<!-- división que contiene la lista despegable de la pagina-->
     	<div class="row">
+    		<h2>Seleccione su grupo</h2>
     		<!--Script para listas dependientes, semestres-> materias->grupos-->
     		<SCRIPT LANGUAJE="JavaScript">
     			/*arreglos para materias y sus respectivos items*/
     			var arrMaterias = new Array();
     			var arrMateriasGrp = new Array();
 
-    			/*Se llenan los arreglos*/
+    			/*Se llenan los arreglos para las materias*/
     			arrMaterias[0]="Metodologia y estrategias de la modalidad";
     			arrMateriasGrp[0] = 1;
     			arrMaterias[1]="Expresion oral y escrita";
@@ -47,6 +48,17 @@
     			/*se llenan los arreglos para los grupos*/
     			var arrGrupos = new Array();
     			var arrGruposGrp = new Array();
+
+    			arrGrupos[0]="Grupo 1";
+    			arrGruposGrp[0]=1;
+    			arrGrupos[1]="Grupo 2";
+    			arrGruposGrp[1]=1;
+
+    			arrGrupos[2]="Grupo 1";
+    			arrGruposGrp[2]=2;
+    			arrGrupos[3]="Grupo 2";
+    			arrGruposGrp[3]=2;
+
 
     			/*metodo*/
     			function selectChange(control, controlToPopulate, ItemArray, GroupArray)
@@ -76,13 +88,26 @@
 
     			}
     		</SCRIPT>
-    		<SELECT id=firstChoice name=firstChoice onchange="selectChange(this, myChoices.secondChoice, arrMaterias, arrMateriasGrp);">
-				<option value=0 SELECTED>[Selecciona]</option>
-				<option value=1>Semestre 1</option>
-				<option value=2>Semestre 2</option>
-				<option value=3>Semestre 3</option>
-			</SELECT>
+    		<form name= myChoices>
+    			<table aling="center">
+    				<tr>
+    					<td>
+    						<select id=firstChoice name="firstChoice onchange"="selectChange(this, myChoices.secondChoice, arrMaterias, arrMateriasGrp);">
+								<option value=0 SELECTED>[Selecciona]</option>
+								<option value=1>Semestre 1</option>
+								<option value=2>Semestre 2</option>
+								<option value=3>Semestre 3</option>
+							</select>
+    					</td><td>
 
+						<select id=secondChoice name="secondChoice onchange"="selectChange(this, myChoices.thirdChoice, arrGrupos, arrGruposGrp);">
+						</select>
+						<select id=thirdChoice name="thirdChoice">
+						</select>
+    					</td>
+    				</tr>
+    			</table>
+			</form>
     		<!--<h2>><a href="#">Plan curricular</h2></a>
     		<h2>..><a href="#">Semestre I</h2></a>
     		<h2>....><a href="#">Materia 1</h2></a>-->
