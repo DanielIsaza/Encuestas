@@ -1,18 +1,18 @@
 <!doctype>
-<!-- Vista principal-->
+<!-- Vista para el acta de socializacion del microcurriculo-->
 <html>
 	<!--cabecera de la pagina-->
 	<head>
 		<!--titulo de la pestaña de pagina-->
-		<title>Plan curricular</title>
+		<title>Reporte Espacio Acad&eacute;mico</title>
 		<!--JQuery-->
 		<script src="//code.jquery.com/jquery-2.1.3.js"></script>
-		<!--JavaScript-->
+		<!-- JavaScript-->
 		<script type="./main.js"></script>
-        <script src="../js/modernizr.js"></script>
+		<script src="../js/modernizr.js"></script>
 		<!--CSS-->
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
-        <!--foundation-->
+		<!--foundation-->
         <link rel="stylesheet" href="../css/foundation.css">
 	</head>
 	<!--cuerpo de la pagina-->
@@ -22,13 +22,11 @@
 			<!-- división que contiene el encabezado de la pagina-->
 			<div class="encabezado">
 				<h1><B>Programa CIDBA</B></h1>
-				<h2>Universidad del Quind&iacute;o</h2>
+				<h2>Reporte por espacio acad&eacute;mico</h2>
 			</div>
 		</header>
-		<!-- división que contiene la lista despegable de la pagina-->
-    	<div class="contenedor">
-    		
-    		<!--Script para listas dependientes, semestres-> materias->grupos-->
+		<div class="contenedor">
+			<!--Script para listas dependientes, semestres-> materias->grupos-->
     		<SCRIPT LANGUAJE="JavaScript">
     			/*arreglos para materias y sus respectivos items*/
     			var arrMaterias = new Array();
@@ -38,7 +36,7 @@
     			arrMaterias[0]="Metodologia y estrategias de la modalidad";
     			arrMateriasGrp[0] = 1;
     			arrMaterias[1]="Expresion oral y escrita";
-    			arrMateriasGrp[1]= 3;
+    			arrMateriasGrp[1]= 1;
 
     			arrMaterias[2]="Proficiencia en español";
     			arrMateriasGrp[2]=2;
@@ -47,22 +45,6 @@
 
     			arrMaterias[4]="Semiotica";
     			arrMateriasGrp[4]=3;
-    			
-    			/*se llenan los arreglos para los grupos*/
-    			var arrGrupos = new Array();
-    			var arrGruposGrp = new Array();
-
-    			arrGrupos[60]="Grupo 1";
-    			arrGruposGrp[60]=0;
-    			arrGrupos[61]="Grupo 2";
-    			arrGruposGrp[61]=0;
-
-    			arrGrupos[62]="Grupo 1";
-    			arrGruposGrp[62]=4;
-    			arrGrupos[63]="Grupo 8";
-    			arrGruposGrp[63]=4;
-
-
     			//metodo que  llena las opciones de las listas despeglables segun la seleccion del usuario
     			function selectChange(control, controlToPopulate, ItemArray, GroupArray)
     			{
@@ -73,10 +55,6 @@
                     //primero se vacia el segundo cuadro despegalbe de cualquier opcion almacenada
     				for (var q=controlToPopulate.options.length;q>=0;q--) controlToPopulate.options[q]=null;
   						if (control.name == "firstChoice") 
-  					{
-                        //Se vacia el tercer cuadro despegable de cualquier opcion almacenada
-    					for (var q=myChoices.thirdChoice.options.length;q>=0;q--) myChoices.thirdChoice.options[q] = null;
- 					}
                     /*
                     *Ahora bucle a través de la matriz de elementos individuales
                     *Cualquier contiene el mismo id hijo se añaden a el segundo cuadro desplegable
@@ -97,9 +75,9 @@
     				}
 
     			}
-    		</SCRIPT><!--fin del script-->
 
-            <!--Formulario con la estructura de los cuadros despegables-->
+    		</SCRIPT>
+    		<!--Formulario con la estructura de los cuadros despegables-->
     		<form name= myChoices method="post" action="">
                 <h2>Seleccione su grupo</h2>
                 <!--se organizan los elementos del formulario en divs que contienen las listas despegables-->
@@ -119,18 +97,11 @@
 						    <select id=secondChoice name="secondChoice" onchange="selectChange(this, myChoices.thirdChoice, arrGrupos, arrGruposGrp);" required>
 						    </select>
                         </div>
-                        <div>
-                            <h3>3. Seleccione el grupo del espacio acad&eacute;mico al cual esta inscrito</h3>
-                            <!--tercer cuadro despegable para la seleccion del grupo-->
-						    <select id=thirdChoice name="thirdChoice" required>
-						    </select>
-                        </div>
-    					
                 <section  class="contenedorCentrado">
-                    <!--boton que redirecciona al formulario acta de socializacion-->
-                    <button class="boton" type="submit" formaction="actaSocializacion.php">Generar</button>
+                	<!--boton que redirecciona al formulario acta de socializacion-->
+                   	<button class="boton" type="submit" formaction="actaSocializacion.php">Continuar</button>
                 </section>
 			</form>
-    	</div>
+		</div>
 	</body>
 </html>
