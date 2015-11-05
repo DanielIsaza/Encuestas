@@ -23,4 +23,17 @@ Class Pregunta extends Modelo
 		$respuesta = "";
 		$idActaConcertacion = 0;
 	}
+	/*Metodo con la consulta sql para agregar un estudiante*/
+	public function agregarPregunta($data) {
+        
+        $sql = "INSERT into pregunta(
+          numeroPregunta,
+          respuesta,
+          ActaConcertacion_idActaConcertacion)
+          VALUES (
+          '".$data['numeroPregunta']."',
+          '".$data['respuesta']."',
+          ".$data['ActaConcertacion_idActaConcertacion'].")";
+        $consulta = $this->query($sql);
+       }
 }

@@ -23,7 +23,7 @@ Class Estudiante extends Modelo
 		$nombreEstudiante = "";
 		$idPrograma = 0;
 	}
-
+	/*Metodo con la consulta sql para agregar un estudiante*/
 	public function agregarEstudiante($data) {
         
         $sql = "INSERT into estudiante(

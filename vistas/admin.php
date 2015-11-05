@@ -16,7 +16,6 @@
 		<!--foundation-->
         <link rel="stylesheet" href="../css/foundation.css">
 	</head>
-	</head>
 	<!--cuerpo de la pagina-->
 	<body>
 		<!--encabezado de la pagina-->
@@ -30,8 +29,19 @@
 		<!-- división con el contenido de la pag-->
     	<div class="row">
     		<form action="#" method="post">
-    			<h2>Haga click aqu&iacute; para generar los reportes</h2>
-    			<button class="boton" name="hola" type="submit" >Generar reportes</button>
+    			<h2>Aqu&iacute; puede generar los reportes</h2>
+    			<div>
+    				<h3>Generar reporte completo (Todos los espacios academicos)</h3>
+    				<button class="boton" name="reporteGeneral" type="submit" >Generar</button>
+    			</div>
+    			<div>
+    				<h3>Generar reporte por espacio academico</h3>
+    				<button class="boton" name="reporteMaterias" type="submit" formaction="reporteMateria.php" >Continuar</button>
+    			</div>
+    			<div>
+    				<h3>Generar reporte por grupo</h3>
+    				<button class="boton" name="hola" type="reporteGrupo" formaction="reporteGrupo.php" >Continuar</button>
+    			</div>
     		</form>
 		</div>
 	</body>
