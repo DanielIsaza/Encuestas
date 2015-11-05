@@ -1,3 +1,4 @@
+<?php include_once("../controladores/indexC.php");?>
 <!doctype>
 <!-- Vista principal-->
 <html>
@@ -30,39 +31,15 @@
     		
     		<!--Script para listas dependientes, semestres-> materias->grupos-->
     		<SCRIPT LANGUAJE="JavaScript">
-    			/*arreglos para materias y sus respectivos items*/
-    			var arrMaterias = new Array();
-    			var arrMateriasGrp = new Array();
-
-    			/*Se llenan los arreglos para las materias*/
-    			arrMaterias[0]="Metodologia y estrategias de la modalidad";
-    			arrMateriasGrp[0] = 1;
-    			arrMaterias[1]="Expresion oral y escrita";
-    			arrMateriasGrp[1]= 1;
-
-    			arrMaterias[2]="Proficiencia en español";
-    			arrMateriasGrp[2]=2;
-    			arrMaterias[3]="redaccion";
-    			arrMateriasGrp[3]=2;
-
-    			arrMaterias[4]="Semiotica";
-    			arrMateriasGrp[4]=3;
     			
+                /*arreglos para materias y sus respectivos items*/
+                var arrMaterias = new Array(<?php for($i=0;$i<count($datos2);$i++){ if($i<(count($datos2)-1)){ echo json_encode($datos2[$i]).','; }else{ echo json_encode($datos2[$i]);}}?> ) 
+                var arrMateriasGrp = new Array();
+                   
     			/*se llenan los arreglos para los grupos*/
-    			var arrGrupos = new Array();
-    			var arrGruposGrp = new Array();
-
-    			arrGrupos[60]="Grupo 1";
-    			arrGruposGrp[60]=0;
-    			arrGrupos[61]="Grupo 2";
-    			arrGruposGrp[61]=0;
-
-    			arrGrupos[62]="Grupo 1";
-    			arrGruposGrp[62]=4;
-    			arrGrupos[63]="Grupo 8";
-    			arrGruposGrp[63]=4;
-
-
+    			var arrGrupos = new Array(<?php for($i=0;$i<count($datos3);$i++){ if($i<(count($datos3)-1)){ echo json_encode($datos3[$i]).','; }else{ echo json_encode($datos3[$i]);}}?>);
+                var arrGruposGrp = new Array();
+    		
     			//metodo que  llena las opciones de las listas despeglables segun la seleccion del usuario
     			function selectChange(control, controlToPopulate, ItemArray, GroupArray)
     			{
@@ -87,11 +64,11 @@
   					controlToPopulate.add(myEle) ;
   					for ( x = 0 ; x < ItemArray.length  ; x++ )
    					{
-     					if ( GroupArray[x] == control.value )
+     					if ( GroupArray[x].id == control.value )
        					{
          					myEle = document.createElement("option") ;
          					myEle.value = x ;
-        					myEle.text = ItemArray[x] ;
+        					myEle.text = ItemArray[x].nombre ;
         					controlToPopulate.add(myEle) ;
        					}
     				}
@@ -108,9 +85,9 @@
                             <!--primer cuadro despegable para la seleccion de semestre-->
     						<select id=firstChoice name="firstChoice" onchange="selectChange(this, myChoices.secondChoice, arrMaterias, arrMateriasGrp);" required>
 								<option value="" SELECTED>-Selecciona-</option>
-								<option value=1>Semestre 1</option>
-								<option value=2>Semestre 2</option>
-								<option value=3>Semestre 3</option>
+                                <?php for($i=0;$i<count($datos);$i++){ ?>
+								<option value="<?php echo $datos[$i]['id']; ?>"><?php echo $datos[$i]['nombre']?></option>
+							    <?php  } ?>
 							</select>
                         </div>
     					<div>

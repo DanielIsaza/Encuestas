@@ -2,7 +2,6 @@
 	class Modelo
 	{
 		protected $conexion;
-		protected $nombretabla;
 		protected $host;
 		protected $db_name ;
 		protected $username;
@@ -26,6 +25,8 @@
 
 		protected function query($query)
 		{
-			return $this->conexion->query($query);
+			$result = $this->conexion->prepare($query);
+			$result->execute();
+			return $result;
 		}
 }

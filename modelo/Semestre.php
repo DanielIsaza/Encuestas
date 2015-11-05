@@ -24,15 +24,15 @@ Class Semestre extends Modelo
 	/**
 	* Lista de semestres 
 	*/
-	function listaSemestres()
+	function listarSemestres()
 	{
 		$sql = "SELECT idSemestre,nombreSemestre 
 					FROM semestre";
-        $consulta = $this->query($sql);
-         $datos = array();
 
+        $consulta = $this->query($sql);
+        $datos = array();
         $i=0;
-        while($dato = $consulta->fetch_array())
+        while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
         {
         	$datos[$i] = array();
         	$datos[$i]['id'] = $dato['idSemestre'];

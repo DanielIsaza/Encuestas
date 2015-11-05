@@ -25,20 +25,19 @@ Class EspacioAcademico extends Modelo
 	* Metodo que busca los espacios academicos 
 	* de un semestre
 	*/
-	function listarEspaciosAcademicos($idSemestre)
+	function listarEspaciosAcademicos()
 	{
-		$sql="SELECT idEspacioAcademico,nombre FROM `espacioacademico` WHERE Semestre_idSemestre=".$idSemestre;
+		$sql="SELECT idEspacioAcademico,nombre,Semestre_idSemestre FROM espacioacademico";
         $consulta = $this->query($sql);
-     	$datos = array();
+
         $i=0;
-        while($dato = $consulta->fetch_array())
+        while($dato = $consulta->fetch(PDO::FETCH_BOTH))
         {
-        	$datos[$i] = array();
-        	$datos[$i]['id'] = $row['idEspacioAcademico'];
-        	$datos[$i]['nombre'] = $row['nombre'];
+        	$datos[$i]['id'] = $dato['idEspacioAcademico'];
+        	$datos[$i]['nombre'] = $dato['nombre'];
+        	$datos[$i]['semestre'] = $dato['Semestre_idSemestre'];
         	$i++;
         }
-
         return $datos;
 	}
 }

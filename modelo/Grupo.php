@@ -24,18 +24,20 @@ Class Grupo extends Modelo
 		$idPrograma = 0;
 		$correoElectronico = 0;
 	}
-
-	function listarGrupos($idEspacioAcademico)
+	/**
+	*Lista de los espacios academicos presentes en la bd
+	**/
+	function listarGrupos()
 	{
-		$sql="SELECT idGrupo,NumeroGrupo FROM grupo WHERE EspacioAcademico_idEspacioAcademico=33".$idEspacioAcademico;
+		$sql="SELECT idGrupo,NumeroGrupo FROM grupo";
         $consulta = $this->query($sql);
      	$datos = array();
         $i=0;
-        while($dato = $consulta->fetch_array())
+        while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
         {
         	$datos[$i] = array();
-        	$datos[$i]['id'] = $row['idGrupo'];
-        	$datos[$i]['numero'] = $row['NumeroGrupo'];
+        	$datos[$i]['id'] = $dato['idGrupo'];
+        	$datos[$i]['numero'] = $dato['NumeroGrupo'];
         	$i++;
         }
 
