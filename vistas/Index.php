@@ -34,12 +34,10 @@
     			
                 /*arreglos para materias y sus respectivos items*/
                 var arrMaterias = new Array(<?php for($i=0;$i<count($datos2);$i++){ if($i<(count($datos2)-1)){ echo json_encode($datos2[$i]).','; }else{ echo json_encode($datos2[$i]);}}?> ) 
-                var arrMateriasGrp = new Array();
-                   
+
     			/*se llenan los arreglos para los grupos*/
     			var arrGrupos = new Array(<?php for($i=0;$i<count($datos3);$i++){ if($i<(count($datos3)-1)){ echo json_encode($datos3[$i]).','; }else{ echo json_encode($datos3[$i]);}}?>);
-                var arrGruposGrp = new Array();
-    		
+    		    
     			//metodo que  llena las opciones de las listas despeglables segun la seleccion del usuario
     			function selectChange(control, controlToPopulate, ItemArray, GroupArray)
     			{
@@ -64,10 +62,10 @@
   					controlToPopulate.add(myEle) ;
   					for ( x = 0 ; x < ItemArray.length  ; x++ )
    					{
-     					if ( GroupArray[x].id == control.value )
+     					if ( GroupArray[x].depende == control.value )
        					{
          					myEle = document.createElement("option") ;
-         					myEle.value = x ;
+         					myEle.value = GroupArray[x].pk ;
         					myEle.text = ItemArray[x].nombre ;
         					controlToPopulate.add(myEle) ;
        					}
@@ -83,7 +81,7 @@
                         <div>
                             <h3>1. Seleccione el semestre del espacio acad&eacute;mico</h3>
                             <!--primer cuadro despegable para la seleccion de semestre-->
-    						<select id=firstChoice name="firstChoice" onchange="selectChange(this, myChoices.secondChoice, arrMaterias, arrMateriasGrp);" required>
+    						<select id=firstChoice name="firstChoice" onchange="selectChange(this, myChoices.secondChoice, arrMaterias, arrMaterias);" required>
 								<option value="" SELECTED>-Selecciona-</option>
                                 <?php for($i=0;$i<count($datos);$i++){ ?>
 								<option value="<?php echo $datos[$i]['id']; ?>"><?php echo $datos[$i]['nombre']?></option>
@@ -93,7 +91,7 @@
     					<div>
                             <h3>2. Seleccione el espacio acad&eacute;mico</h3>
                             <!--segundo cuadro despegable para la seleccion del espacio academico-->
-						    <select id=secondChoice name="secondChoice" onchange="selectChange(this, myChoices.thirdChoice, arrGrupos, arrGruposGrp);" required>
+						    <select id=secondChoice name="secondChoice" onchange="selectChange(this, myChoices.thirdChoice, arrGrupos, arrGrupos);" required>
 						    </select>
                         </div>
                         <div>

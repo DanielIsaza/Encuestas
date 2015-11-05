@@ -29,15 +29,17 @@ Class Grupo extends Modelo
 	**/
 	function listarGrupos()
 	{
-		$sql="SELECT idGrupo,NumeroGrupo FROM grupo";
+		$sql="SELECT idGrupo,NumeroGrupo,EspacioAcademico_idEspacioAcademico FROM grupo";
         $consulta = $this->query($sql);
      	$datos = array();
         $i=0;
         while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
         {
         	$datos[$i] = array();
-        	$datos[$i]['id'] = $dato['idGrupo'];
-        	$datos[$i]['numero'] = $dato['NumeroGrupo'];
+        	$datos[$i]['pk'] = $dato['idGrupo'];
+        	$datos[$i]['nombre'] = $dato['NumeroGrupo'];
+        	$datos[$i]['depende'] = $dato['EspacioAcademico_idEspacioAcademico'];
+        	
         	$i++;
         }
 

@@ -44,9 +44,9 @@ Class EspacioAcademico extends Modelo
         $i=0;
         while($dato = $consulta->fetch(PDO::FETCH_BOTH))
         {
-        	$datos[$i]['id'] = $dato['idEspacioAcademico'];
+        	$datos[$i]['pk'] = $dato['idEspacioAcademico'];
         	$datos[$i]['nombre'] = $dato['nombre'];
-        	$datos[$i]['semestre'] = $dato['Semestre_idSemestre'];
+        	$datos[$i]['depende'] = $dato['Semestre_idSemestre'];
         	$i++;
         }
         return $datos;
