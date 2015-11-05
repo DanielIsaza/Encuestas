@@ -25,10 +25,20 @@
 				<h2>Acta de socializaci&oacute;n del microcurr&iacute;culo</h2>
 			</div>
 		</header>	
+
+		<!--php que guarda las opciones elegidas por el usuario-->
+		<?php
+		$semestreE = $_POST['firstChoice'];
+		$materiaE = $_POST['secondChoice'];
+		$grupoE = $_POST['thirdChoice'];
+		?>
+		<!--Se envia a actaConcertacion el valor de estas variables-->
+		<a href="actaConcertacion.php"?s=<?php $semestreE;?>, m=<?php $materiaE?>, g= <?php $grupoE;?>/>
+
 			<!--division que contiene el formulario de la pagina-->
 			<div class="row">
 				<!--formulario que contene las preguntas del acta de socializacion-->
-				<form action="#" method="post">
+				<form action="actaConcertacion.php" method="post">
 					<!--datos personales del estudiante-->
 					<h2><B>Datos estudiante:</B></h2>
 					

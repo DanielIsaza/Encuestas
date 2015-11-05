@@ -75,7 +75,7 @@
     		</SCRIPT><!--fin del script-->
 
             <!--Formulario con la estructura de los cuadros despegables-->
-    		<form name= myChoices method="post" action="">
+    		<form name= myChoices method="post" action="actaSocialiacion.php">
                 <h2>Seleccione su grupo</h2>
                 <!--se organizan los elementos del formulario en divs que contienen las listas despegables-->
                         <div>
