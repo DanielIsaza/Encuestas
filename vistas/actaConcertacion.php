@@ -28,9 +28,9 @@
 		</header>
 		<!--valores traidos desde index-->
 		<?php
-			$semestre = $_GET["s"];
-			$materia = $_GET["m"];
-			$grupo = $_GET["g"];
+			$semestre = $_POST["s"];
+			$materia = $_POST["m"];
+			$grupo = $_POST["g"];
 		?>
 
 		<!--division que contiene el segundo formulario-->

@@ -25,19 +25,21 @@ Class ActaConcertacion extends Modelo
 		$idGrupo = 0;
 		$idGrupo = 0;
 	}
-
+	/**
+	*Metodo que permite agregar el acta de concertacion 
+	*/
 	public function agregarActaConcertacion($data) {
         
         $sql = "INSERT into actaconcertacion(
           numeroActaConcertacion,
-          año,
+          ano,
           Grupo_idGrupo,
           Estudiante_idEstudiante)
           VALUES (
-          '".$data['numeroActaConcertacion']."',
-          '".$data['año']."',
-          ".$data['Grupo_idGrupo'].",
-          ".$data['Estudiante_idEstudiante'].")";
+          '".$data['numero']."',
+          '".$data['ano']."',
+          ".$data['idGrupo'].",
+          ".$data['idEstudiante'].")";
         $consulta = $this->query($sql);
        }
 }

@@ -103,7 +103,7 @@
     					
                 <section  class="contenedorCentrado">
                     <!--boton que redirecciona al formulario acta de socializacion-->
-                    <button class="boton" type="submit" formaction="actaSocializacion.php">Continuar</button>
+                    <button class="boton" type="submit" formaction="actaSocializacion.php?">Continuar</button>
                 </section>
 			</form>
     	</div>

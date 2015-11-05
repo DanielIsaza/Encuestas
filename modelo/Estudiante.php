@@ -24,8 +24,8 @@ Class Estudiante extends Modelo
 		$idPrograma = 0;
 	}
 	/*Metodo con la consulta sql para agregar un estudiante*/
-	public function agregarEstudiante($data) {
-        
+	public function agregarEstudiante($data) 
+	{        
         $sql = "INSERT into estudiante(
           codigoEstudiante,
           nombreEstudiante,
@@ -35,5 +35,21 @@ Class Estudiante extends Modelo
           '".$data['nombreEstudiante']."',
           ".$data['Programa_idPrograma'].")";
         $consulta = $this->query($sql);
-       }
+    }
+     /**
+     *
+     */
+     public function buscarId($codigo)
+     {
+     	$sql = "SELECT idEstudiante FROM estudiante WHERE codigoEstudiante=".$codigo;
+     	$consulta = $this->query($sql);
+
+     	$i=0;
+        while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
+        {
+        	$datos[$i] = $dato['idEstudiante'];
+        	$i++;
+        }
+     	return $datos;
+     }
 }
