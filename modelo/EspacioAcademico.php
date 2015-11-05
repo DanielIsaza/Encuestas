@@ -21,6 +21,17 @@ Class EspacioAcademico extends Modelo
 		$idSemestre = 0;
 		$nombre = "";
 	}
+	/*Metodo con la consulta sql para agregar un espacio academico*/
+	public function agregarEspacioAcademico($data) {
+        
+        $sql = "INSERT into espacioacademico(
+          nombre,
+          Semestre_idSemestre)
+          VALUES (
+          '".$data['nombre']."',
+          ".$data['Semestre_idSemestre'].")";
+        $consulta = $this->query($sql);
+       }
 	/**
 	* Metodo que busca los espacios academicos 
 	* de un semestre

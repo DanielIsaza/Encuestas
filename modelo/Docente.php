@@ -25,4 +25,19 @@ Class Docente extends Modelo
 		$idPrograma = 0;
 		$correoElectronico = "";
 	}
+	/*Metodo con la consulta sql para agregar un docente*/
+	public function agregarDocente($data) {
+        
+        $sql = "INSERT into docente(
+          cedulaDocente,
+          nombreDocente,
+          correoElectronico,
+          Programa_idPrograma)
+          VALUES (
+          ".$data['cedulaDocente'].",
+          ".$data['nombreDocente'].",
+          '".$data['correoElectronico']."',
+          ".$data['Programa_idPrograma'].")";
+        $consulta = $this->query($sql);
+       }
 }

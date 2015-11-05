@@ -97,7 +97,7 @@
 
         <!--Formulario con la estructura de los cuadros despegables-->
         <form name= myChoices method="post" action="">
-          <h2>Seleccione su grupo</h2>
+          <h2>Seleccione el grupo para el reporte</h2>
           <!--se organizan los elementos del formulario en divs que contienen las listas despegables-->
           <div>
             <h3>1. Seleccione el semestre del espacio acad&eacute;mico</h3>
@@ -116,7 +116,7 @@
             </select>
           </div>
           <div>
-            <h3>3. Seleccione el grupo del espacio acad&eacute;mico al cual esta inscrito</h3>
+            <h3>3. Seleccione el grupo del espacio acad&eacute;mico para el reporte</h3>
             <!--tercer cuadro despegable para la seleccion del grupo-->
             <select id=thirdChoice name="thirdChoice" required>
             </select>

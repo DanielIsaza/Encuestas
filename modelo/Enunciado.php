@@ -21,4 +21,15 @@ Class Enunciado extends Modelo
 		$numeroPregunta = 0;
 		$enunciado = "";
 	}
+	/*Metodo con la consulta sql para agregar un enunciado*/
+	public function agregarEnunciado($data) {
+        
+        $sql = "INSERT into enunciado(
+          numeroPregunta,
+          enunciado)
+          VALUES (	
+          ".$data['numeroPregunta'].",
+          '".$data['enunciado']."'	)";
+        $consulta = $this->query($sql);
+       }
 }

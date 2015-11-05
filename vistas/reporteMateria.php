@@ -79,7 +79,7 @@
     		</SCRIPT>
     		<!--Formulario con la estructura de los cuadros despegables-->
     		<form name= myChoices method="post" action="">
-                <h2>Seleccione su grupo</h2>
+                <h2>Seleccione el espacio acad&eacute;mico para el reporte</h2>
                 <!--se organizan los elementos del formulario en divs que contienen las listas despegables-->
                         <div>
                             <h3>1. Seleccione el semestre del espacio acad&eacute;mico</h3>
