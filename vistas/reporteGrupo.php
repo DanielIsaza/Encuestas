@@ -72,7 +72,7 @@
           }
         </SCRIPT><!--fin del script-->
         <!--Formulario con la estructura de los cuadros despegables-->
-        <form name= myChoices method="post" action="">
+        <form name= myChoices method="post">
           <h2>Seleccione el grupo para el reporte</h2>
           <!--se organizan los elementos del formulario en divs que contienen las listas despegables-->
           <div>
@@ -100,7 +100,7 @@
              
           <section  class="contenedorCentrado">
             <!--boton que redirecciona al formulario acta de socializacion-->
-             <button class="boton" type="submit" formaction="actaSocializacion.php">Generar</button>
+             <button class="boton" type="submit" >Generar</button>
           </section>
       </form>
       </div>

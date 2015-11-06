@@ -40,7 +40,7 @@ Class EspacioAcademico extends Modelo
 	{
 		$sql="SELECT idEspacioAcademico,nombre,Semestre_idSemestre FROM espacioacademico";
         $consulta = $this->query($sql);
-
+        $datos = array();
         $i=0;
         while($dato = $consulta->fetch(PDO::FETCH_BOTH))
         {
