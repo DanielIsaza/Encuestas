@@ -40,8 +40,16 @@ if(isset($_POST['thirdChoice']))
 	$enunciado = new Enunciado();
 	$preguntas = $enunciado->listarEnunciados();
 
-	grafico(2,4);
-	crear($datos,$preguntas);
+	$pdf = new PDF();
+
+	titulo($datos,$pdf);
+
+	for($i=0;$i<(count($preguntas)-2);$i++)
+	{
+		crear($preguntas[$i],$pdf);
+	}
+
+	descarga($pdf);
 }
 
 function grafico($si,$no)
@@ -69,23 +77,49 @@ function grafico($si,$no)
     $grafico->Stroke($nombreImagen);
 }
 
-function crear($datos,$preguntas)
+function titulo($datos,$pdf)
 {
-	$pdf = new PDF();
+	//se inserta el titulo en el pdf, nombre del espacio academico
 	$pdf->setTitle('Reporte '.$datos[0]['espacioAcademico']);
-	$pdf->AliasNbPages();
+	//Se agrega la pagina 
 	$pdf->AddPage();
+	// Se agrega el pie de pagina con el numero de pagina 
+	$pdf->AliasNbPages();
+	//se define un nuevo tipo y tamaño de letra para los subtitulos
 	$pdf->SetFont('Times','B',14);
+	//Se define la aliniacion horizontal que tendran en la hoja
 	$pdf->SetX(30);
+	//Se agregan el nombre del docente y del grupo en celdas separadas
 	$pdf->Cell(0,10,'Docente: '.$datos[0]['docente'],0,10);
 	$pdf->Cell(0,10,'Grupo: '.$datos[0]['numeroGrupo'],0,10);
-	$pdf->Ln(6);
+}
+
+function crear($pregunta,$pdf)
+{
+	$pdf->setTitle("");
+
+	$pdf->SetX(30);
+	//Se define un nuevo tipo y tamaño de letra para el contenido
 	$pdf->setFont('Times','',13);
-	$pdf->Multicell(0,6,$preguntas[0]['enunciado'],0,7);
+	//Se agrega en una multicelda (para mantener el contenido en el margen) el contenido del enunciado 
+	$pdf->Multicell(0,6,$pregunta['enunciado'],0,7);
+	//Se da un espacio 
 	$pdf->Ln(6);
+	//Se general el grafico respectivo con las respuestas de la pregunta
+	grafico(2,4);
+	//Se inserta el  grafico en el pdf
 	$pdf->Cell("", "", $pdf->Image('../img/temp/grafico.png', $pdf->GetX()+33,$pdf->GetY()),'LR',0,'R');
-	$pdf->Output('reporte1.pdf','D');
-	//$pdf->Output();
+	//se borra el grafico almacenad como archivo temporal
 	unlink('../img/temp/grafico.png');
+	//Se da un espacio entre los subtitulos y el contenido del reporte
+	$pdf->Ln(93);
+}
+
+function descarga($pdf)
+{
+	//Se descarga el pdf con un nombre
+	//$pdf->Output('reporte1.pdf','D');
+	//Codigo que visualiza el pdf en el navegador ---> 
+	$pdf->Output();
 }
 ?>
