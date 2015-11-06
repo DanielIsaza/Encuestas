@@ -6,15 +6,16 @@ include_once("../modelo/ActaConcertacion.php");
 //Se obtiene el valor del grupo seleccionado 
 $grupoid = $_POST['secondChoice'];
 //El valor se guarda en una cookie
-setcookie("id[grupo]",$grupoid,time()+360);
+setcookie("idGrupo",$grupoid,time()+360);
 
 if(isset($_POST['nombre']))	
 {  
+	//Ingreso del estudiante que diligencio las actas
    $cod = ingresarEstudiante();
-	//cookie con el id de estudiante
-   	setcookie("id[estudiante]",$cod[0],time()+360);
-   	ingresarActa($cod);
-   	cambio();
+   //Ingreso del acta de socializacion 
+   ingresarActa($cod);
+   //Ingreso del acta de concertacion 
+   ingresarActa2($cod);
 }
 /**
 *Metodo que permite ingresar el estudiante a la base de datos
@@ -30,7 +31,6 @@ function ingresarEstudiante()
 
     return $estudiante->buscarId($data['codigoEstudiante']);
 }
-
 /*
 *Metodo que permite ingresar el acta a la base de datos
 */
@@ -45,11 +45,25 @@ function ingresarActa($cod)
 	$data['idGrupo'] =  $_COOKIE ["idGrupo"];
 	//codigo del estudiante
 	$data['idEstudiante'] = $cod[0];
+	//Ingreso del acta
 	$acta->agregarActaConcertacion($data);
 }
 
-function cambio(){
-	sleep(1);
-header("Location: actaConcertacion.php"); 
+/**
+*Metodo quepermite ingresar el acta de concertacion 
+*/
+function ingresarActa2($cod)
+{
+	$acta2 = new ActaConcertacion();
+	//El 2 corresponde a un acta de concertacion
+	$data2['numero']= 2;
+	//año actual con 4 digitos
+	$data2['ano'] = date('Y');
+	//id del grupo 
+	$data2['idGrupo'] =  $_COOKIE ["idGrupo"];
+	//codigo del estudiante
+	$data2['idEstudiante'] = $cod[0];
+	//Ingreso del acta
+	$acta2->agregarActaConcertacion($data2);
 }
 ?>
