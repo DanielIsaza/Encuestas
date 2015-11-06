@@ -41,7 +41,8 @@
                     	<input name="codigo" id="codigo" type="text" placeholder="Sin puntos, ni comas, ni espacios" required />
 					
 					<!--preguntas-->
-					<h2><B>Responda SI o NO a las siguentes preguntas:</B><br></h2>
+					<h2><B>Acta de socializaci&oacute;n del microcurr&iacute;culo</B><br></h2>
+					<p><B>Responda SI o NO a las siguentes preguntas:</B></p>
 					
 					
 						<article for="pregunta1"><h3><B>1.</B> &#191;El profesor socializ&oacute; el microcurr&iacute;culo en el Espacio virtual del Espacio Acad&eacute;mico&#63;</h3>
@@ -89,6 +90,42 @@
 							<option value="0">NO</option>
 						</select> </article>
 					</h3>
+					<!--preguntas-->
+					<h2><B>Acta de concertacion acad&eacute;mica</B><br></h2>
+					<p><B>Responda SI o NO a las siguentes preguntas:</B></p>
+
+					<article for="pregunta7"><h3><B>1. </B>&#191;El profesor ha cumplido con la atenci&acute;n de asesor&iacute;as e inquietudes 
+						en los tiempos establecidos en el microcurriculo&#63;</h3>
+					<select id="pregunta7" name="pregunta7" required>
+						<option value="" selected="selected">- selecciona -</option>
+						<option value="1">SI</option>
+						<option value="0">NO</option>
+					</select></article>
+			
+					<article for="pregunta8"><h3><B>2. </B>&#191;El profesor ha cumplido con la apertura de las actividades y 
+						los recursos seg&uacute;n lo establecido en el cronograma del espacio acad&eacute;mico&#63;</h3>
+					<select>
+						<option value="">- selecciona -</option>
+						<option value="1">SI</option>
+						<option value="0">NO</option>
+					</select></article>
+			
+					<article for="pregunta9"><h3><B>3. </B>&#191;El profesor ha dispuesto los recursos apropiados para desarrollar 
+						los contenidos del espacio acad&eacute;mico&#63;</h3>
+					<select id="pregunta9" name="pregunta9" required>
+						<option value="" selected="selected">- selecciona -</option>
+						<option value="1">SI</option>
+						<option value="0">NO</option>
+					</select></article>
+			
+					<article for="pregunta10"><h3><B>4. </B>&#191;El profesor ha publicado en el libro de calificaciones de la plataforma, 
+						la evaluaci&oacute;n y retroalimentaci&oacute;n <br>a las actividades de los estudiantes, en los tiempos 
+						establecidos en el Estatuto Estudiantil&#63;</h3>
+						<select id="pregunta10" name="pregunta10" required>
+						<option value="" selected="selected">- selecciona -</option>
+						<option value="1">SI</option>
+						<option value="0">NO</option>
+					</select></article>
 					<!--observaciones-->
 					<h2>Observaciones:</h2>
 					<h3>
