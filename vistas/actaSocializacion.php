@@ -23,7 +23,7 @@
 			<!-- división que contiene el encabezado de la pagina-->
 			<div class="encabezado">
 				<h1><B>Programa CIDBA</B></h1>
-				<h2>Acta de socializaci&oacute;n del microcurr&iacute;culo</h2>
+				<h2>Actas de concertaci&oacute;n acad&eacute;mica</h2>
 			</div>
 		</header>	
 		<!--division que contiene el formulario de la pagina-->
