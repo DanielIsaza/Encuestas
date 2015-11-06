@@ -43,6 +43,15 @@ class PDF extends FPDF
         $this->SetX(30);
     }
 
+    function setSubtitulo($sub,$pdf)
+    {
+        $pdf->SetFont('Times','B',16);
+        //ubicacion
+        $pdf->SetX(90);
+        //Se agrega el numero del grupo
+        $pdf->Cell(0,10,$sub,0,10);
+    }
+
 
     function grafico($si,$no)
     { 

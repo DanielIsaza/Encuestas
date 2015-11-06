@@ -29,11 +29,15 @@ if(isset($_POST['thirdChoice']))
 
 	$pdf->titulo($datos,$pdf);
 	
+	$pdf->setSubtitulo('Acta Socializacion',$pdf);
+
 	for($i=0;$i<(count($preguntas)-6);$i++)
 	{
 		$resp = respuestas($pregunta,$preguntas[$i]['numeroPregunta'],1);
 		$pdf->crear($preguntas[$i],$resp[0],$resp[1],$pdf);
 	}
+
+	$pdf->setSubtitulo('Acta Concertacion',$pdf);
 	
 	for($i=6;$i<(count($preguntas)-2);$i++)
 	{
