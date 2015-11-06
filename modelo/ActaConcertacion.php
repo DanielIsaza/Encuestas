@@ -28,7 +28,8 @@ Class ActaConcertacion extends Modelo
 	/**
 	*Metodo que permite agregar el acta de concertacion 
 	*/
-	public function agregarActaConcertacion($data) {
+	public function agregarActaConcertacion($data) 
+	{
         
         $sql = "INSERT into actaconcertacion(
           numeroActaConcertacion,
@@ -41,5 +42,26 @@ Class ActaConcertacion extends Modelo
           ".$data['idGrupo'].",
           ".$data['idEstudiante'].")";
         $consulta = $this->query($sql);
-       }
+    }
+    /*
+    *Metodo que retorna el id de un acta previamente agregado
+    */
+    public function buscarActa($data)
+    {
+    	$sql="SELECT idActaConcertacion 
+    			FROM actaconcertacion
+    			WHERE numeroActaConcertacion=".$data['numero']."
+    			and Grupo_idGrupo =".$data['idGrupo']."  and
+    			 Estudiante_idEstudiante =".$data['idEstudiante'];
+
+    	$consulta = $this->query($sql);
+    	$datos = array();
+    	$i=0;
+        while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
+        {
+        	$datos[$i] = $dato['idActaConcertacion'];
+        	$i++;
+        }
+     	return $datos;
+    }
 }

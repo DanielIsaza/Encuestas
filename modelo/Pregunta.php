@@ -31,9 +31,10 @@ Class Pregunta extends Modelo
           respuesta,
           ActaConcertacion_idActaConcertacion)
           VALUES (
-          '".$data['numeroPregunta']."',
+          '".$data['numero']."',
           '".$data['respuesta']."',
-          ".$data['ActaConcertacion_idActaConcertacion'].")";
-        $consulta = $this->query($sql);
+          ".$data['idActa'].")";
+		
+		$consulta = $this->query($sql);
        }
 }

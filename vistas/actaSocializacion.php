@@ -104,7 +104,7 @@
 			
 					<article for="pregunta8"><h3><B>2. </B>&#191;El profesor ha cumplido con la apertura de las actividades y 
 						los recursos seg&uacute;n lo establecido en el cronograma del espacio acad&eacute;mico&#63;</h3>
-					<select>
+					<select id="pregunta8" name="pregunta8" required>
 						<option value="">- selecciona -</option>
 						<option value="1">SI</option>
 						<option value="0">NO</option>
