@@ -1,3 +1,4 @@
+<?php include_once("../controladores/actaConcertacionC.php");?>
 <!doctype>
 <!-- Vista para el acta de concertacion academica-->
 <html>
@@ -26,13 +27,6 @@
 				<h2>Acta de concertaci&oacute;n acad&ecute;mica</h2>
 			</div>
 		</header>
-		<!--valores traidos desde index-->
-		<?php
-			$semestre = $_POST["s"];
-			$materia = $_POST["m"];
-			$grupo = $_POST["g"];
-		?>
-
 		<!--division que contiene el segundo formulario-->
 		<div class="row">
 		<!--formulario que contene las preguntas del acta de concertacion-->

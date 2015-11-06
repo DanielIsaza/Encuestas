@@ -6,14 +6,16 @@ include_once("../modelo/ActaConcertacion.php");
 //Se obtiene el valor del grupo seleccionado 
 $grupoid = $_POST['secondChoice'];
 //El valor se guarda en una cookie
-setcookie('idGrupo',$grupoid,time()+3600);
+setcookie("id[grupo]",$grupoid,time()+360);
 
 if(isset($_POST['nombre']))	
 {  
    $cod = ingresarEstudiante();
-   ingresarActa($cod);
+	//cookie con el id de estudiante
+   	setcookie("id[estudiante]",$cod[0],time()+360);
+   	ingresarActa($cod);
+   	cambio();
 }
-
 /**
 *Metodo que permite ingresar el estudiante a la base de datos
 */
@@ -42,9 +44,12 @@ function ingresarActa($cod)
 	//id del grupo 
 	$data['idGrupo'] =  $_COOKIE ["idGrupo"];
 	//codigo del estudiante
-	$data['idEstudiante'] = $cod;
-
+	$data['idEstudiante'] = $cod[0];
 	$acta->agregarActaConcertacion($data);
 }
 
+function cambio(){
+	sleep(1);
+header("Location: actaConcertacion.php"); 
+}
 ?>

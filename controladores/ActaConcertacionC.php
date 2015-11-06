@@ -1,16 +1,31 @@
 <?php
 	include_once("../modelo/ActaConcertacion.php");
-	$acta = new ActaConcertacion();
 
-	if(isset($_POST['numeroActaConcertacion']))	
+  print_r($_COOKIE);
+  die();
+
+	if(isset($_POST['pregunta7']))	
 	{  
+    $acta = new ActaConcertacion();
+    
     $data = array();
-    $data['numeroActaConcertacion']    = $_POST['numeroActaConcertacion'];
-    $data['año']    = $_POST['año'];
-   	$data['Grupo_idGrupo']  = 1;
-   	$data['Estudiante_idEstudiante'] = 1;
+    //numero predeterminado 2 por ser un acta de concertacions
+    $data['numero']    = 2;
+    //año actual con 4 digitos
+    $data['ano'] = date('Y');
+    //grupo al que pertenece el acta de concertacion
+    $data['idGrupo'] =  $_COOKIE ["idGrupo"];
+    //codigo del estudiante
+    $data['idEstudiante'] = $_COOKIE ["idEstudiante"];    
+    print_r($data);
 
     $acta->agregarActaConcertacion($data);
+
+    si();
 	}
 
+function si(){
+  unset($_COOKIE['idGrupo']);
+  unset($_COOKIE['idEstudiante']);
+}
 ?>

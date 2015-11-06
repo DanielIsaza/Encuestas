@@ -29,7 +29,7 @@
 		<!--division que contiene el formulario de la pagina-->
 			<div class="row">
 				<!--formulario que contene las preguntas del acta de socializacion-->
-				<form action="#" method="post" data-abide>
+				<form method="post" data-abide>
 					<!--datos personales del estudiante-->
 					<h2><B>Datos estudiante:</B></h2>
 					
@@ -99,8 +99,7 @@
 					<!--seccion que contiene el boton para rediccionar la pagina-->
 					<section class="contenedorCentrado">
 						<!--boton que redirecciona al formulario acta de concertacion-->
-						<button class="boton" type="submit" href="actaConcertacion">Continuar</button>
-
+						<button class="boton" type="submit" >Continuar</button>
 					</section>
 				</form>
 				
