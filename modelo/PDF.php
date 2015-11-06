@@ -58,13 +58,13 @@ class PDF extends FPDF
         $p1 = new PiePlot($datos);
         $p1->SetLegends($leyenda);
         $p1->SetCenter(0.4);
-         
         //Se muestra el grafico
         $grafico->Add($p1);
         //se asigna nombre con ubicacion a la imagen en una carpeta temporal
-        $nombreImagen = '../img/temp/' . 'grafico' . '.png';
+        $nombreImagen = '../img/temp/' .mt_rand(). '.png';
         // Display the graph
         $grafico->Stroke($nombreImagen);
+        return $nombreImagen;
     }
 
     function titulo($datos,$pdf)
@@ -79,12 +79,13 @@ class PDF extends FPDF
         $pdf->SetFont('Times','B',14);
         //Se define la aliniacion horizontal que tendran en la hoja
         $pdf->SetX(30);
+        //Se agrega el numero del grupo
+        $pdf->Cell(0,10,'Grupo: '.$datos[0]['numeroGrupo'],0,10);
         //Se agregan el nombre del docente y del grupo en celdas separadas
         $pdf->Cell(0,10,'Docente: '.$datos[0]['docente'],0,10);
-        $pdf->Cell(0,10,'Grupo: '.$datos[0]['numeroGrupo'],0,10);
     }
 
-    function crear($pregunta,$pdf)
+    function crear($pregunta,$si,$no,$pdf)
     {
         $pdf->setTitle("");
 
@@ -96,19 +97,18 @@ class PDF extends FPDF
         //Se da un espacio 
         $pdf->Ln(6);
         //Se general el grafico respectivo con las respuestas de la pregunta
-        $pdf->grafico(2,4);
+        $nombre= $pdf->grafico($si,$no);
         //Se inserta el  grafico en el pdf
-        $pdf->Cell("", "", $pdf->Image('../img/temp/grafico.png', $pdf->GetX()+33,$pdf->GetY()),'LR',0,'R');
-        //se borra el grafico almacenad como archivo temporal
-        unlink('../img/temp/grafico.png');
+        $pdf->Cell("", "", $pdf->Image($nombre, $pdf->GetX()+33,$pdf->GetY()),'LR',0,'R');
         //Se da un espacio entre los subtitulos y el contenido del reporte
         $pdf->Ln(93);
     }
 
     function descarga($pdf)
     {
+        array_map('unlink', glob("../img/temp/*"));
         //Se descarga el pdf con un nombre
-        //$pdf->Output('reporte1.pdf','D');
+       // $pdf->Output('reporte1.pdf','D');
         //Codigo que visualiza el pdf en el navegador ---> 
         $pdf->Output();
     }

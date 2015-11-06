@@ -21,19 +21,6 @@ if(isset($_POST['thirdChoice']))
 {
 	$pregunta = new Pregunta();
 	$datos = $pregunta->buscarInfoPregunta($_POST['thirdChoice']);
-	/*$busqueda['idGrupo']=$_POST['thirdChoice'];
-	$busqueda['tipoRespuesta']=1;
-	$busqueda['numeroPregunta']=1;
-
-	print_r($busqueda);
-	$afirmativas = $pregunta->cantPreguntas($datos);
-
-	$busqueda['tipoRespuesta']=0;
-	print_r($busqueda);
-	$negativas = $pregunta->cantPreguntas($datos);
-
-	print_r($afirmativas);
-	print_r($negativas);*/
 
 	$enunciado = new Enunciado();
 	$preguntas = $enunciado->listarEnunciados();
@@ -41,12 +28,41 @@ if(isset($_POST['thirdChoice']))
 	$pdf = new PDF();
 
 	$pdf->titulo($datos,$pdf);
-
-	for($i=0;$i<(count($preguntas)-2);$i++)
+	
+	for($i=0;$i<(count($preguntas)-6);$i++)
 	{
-		$pdf->crear($preguntas[$i],$pdf);
+		$resp = respuestas($pregunta,$preguntas[$i]['numeroPregunta'],1);
+		$pdf->crear($preguntas[$i],$resp[0],$resp[1],$pdf);
+	}
+	
+	for($i=6;$i<(count($preguntas)-2);$i++)
+	{
+		$resp = respuestas($pregunta,$preguntas[$i]['numeroPregunta'],2);
+		$pdf->crear($preguntas[$i],$resp[0],$resp[1],$pdf);
 	}
 
 	$pdf->descarga($pdf);
+}
+
+/*
+*Metodo que busca la cantidad de respuestas afirmativas y negativas de una pregunta
+*/
+function respuestas($pregunta,$num,$tipoActa)
+{
+	$cantidad = array();
+	$busqueda['idGrupo']=$_POST['thirdChoice'];
+	$busqueda['tipoActa'] = $tipoActa;
+	$busqueda['tipoRespuesta']=1;
+	$busqueda['numeroPregunta']=$num;
+
+	$cantidad[0] = $pregunta->cantPreguntas($busqueda)[0]['cantidad'];
+
+	$busqueda['idGrupo']=$_POST['thirdChoice'];
+	$busqueda['tipoActa'] = $tipoActa;
+	$busqueda['tipoRespuesta']=0;
+	$busqueda['numeroPregunta']=$num;
+	$cantidad[1] = $pregunta->cantPreguntas($busqueda)[0]['cantidad'];
+
+	return $cantidad;
 }
 ?>

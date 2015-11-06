@@ -35,12 +35,13 @@ Class Enunciado extends Modelo
 
      public function listarEnunciados()
      {
-     	$sql="SELECT enunciado FROM enunciado";
+     	$sql="SELECT numeroPregunta,enunciado FROM enunciado";
      	$consulta=$this->query($sql);
      	$datos=array();
      	$i=0;
         while($dato = $consulta->fetch(PDO::FETCH_BOTH))
         {
+        	$datos[$i]['numeroPregunta'] = $dato['numeroPregunta'];
         	$datos[$i]['enunciado'] = $dato['enunciado'];
         	$i++;
         }

@@ -60,17 +60,18 @@ Class Pregunta extends Modelo
 
        public function cantPreguntas($datos)
        {
-       	 $sql="SELECT count(respuesta) from grupo join actaconcertacion on grupo.idGrupo = actaconcertacion.Grupo_idGrupo
-       	 		 join pregunta on actaconcertacion.idActaconcertacion = pregunta.ActaConcertacion_idActaConcertacion 
-       	 		 where grupo.idGrupo =".$datos['idGrupo']." and pregunta.respuesta=".$datos['tipoRespuesta']."and
-       	 		 pregunta.numeroPregunta=".$datos['numeroPregunta'];
-       	 		 
+       	 $sql="SELECT count(respuesta) from grupo join actaconcertacion on grupo.idGrupo = actaconcertacion.Grupo_idGrupo 
+              join pregunta on actaconcertacion.idActaConcertacion = pregunta.ActaConcertacion_idActaConcertacion 
+              where idgrupo=".$datos['idGrupo']." and numeroActaConcertacion = ".$datos['tipoActa']."
+              and numeroPregunta=".$datos['numeroPregunta']."  
+              and respuesta=".$datos['tipoRespuesta'];
        	$consulta = $this->query($sql);
+        
        	$datos = array();
         $i=0;
         while($dato = $consulta->fetch(PDO::FETCH_BOTH))
         {
-        	$datos[$i]['cantidad'] = $dato['respuesta'];
+        	$datos[$i]['cantidad'] = $dato['count(respuesta)'];
         	$i++;
         }
         return $datos;  
