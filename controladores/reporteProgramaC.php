@@ -88,7 +88,7 @@ if(isset($_POST['reporteGeneral']))
 
 	if(!is_null($pdf))
 	{
-		$reporte->descargar($pdf);
+		$reporte->descargar('Reporte_Por_Programa');
 	}
 }
 

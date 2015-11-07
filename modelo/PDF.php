@@ -95,6 +95,7 @@ class PDF extends FPDF
         $pdf->SetFont('Times','B',15);
         $pdf->SetX(40);
         $pdf->Multicell(0,0,$datos[0]['espacioAcademico'],0,'C');
+        $pdf->Ln(3);
         //se define un nuevo tipo y tamaño de letra para los subtitulos
         $pdf->SetFont('Times','B',14);
         //Se define la aliniacion horizontal que tendran en la hoja
@@ -124,11 +125,11 @@ class PDF extends FPDF
         $pdf->Ln(94);
     }
 
-    function descarga($pdf)
+    function descarga($pdf,$nombre)
     {
         array_map('unlink', glob("../img/temp/*"));
         //Se descarga el pdf con un nombre
-        $pdf->Output('reporte1.pdf','D');
+        $pdf->Output($nombre.'.pdf','D');
         //Codigo que visualiza el pdf en el navegador ---> 
         //$pdf->Output();
     }

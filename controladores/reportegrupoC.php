@@ -22,7 +22,7 @@ if(isset($_POST['thirdChoice']))
 	$pdf = $reporte->generarReporte($_POST['thirdChoice']);
 	if(!is_null($pdf))
 	{
-		$reporte->descargar($pdf);
+		$reporte->descargar('Reporte_Por_Grupo');
 	}
 }
 ?>

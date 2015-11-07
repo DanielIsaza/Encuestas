@@ -25,6 +25,7 @@ class ReporteGrupo
 	{
 		$acta =  new ActaConcertacion();
 		$bool = $acta->buscarGrupo($idGrupo);
+
 		if((count($bool)) > 0)
 		{
 			$pregunta = new Pregunta();
@@ -91,9 +92,9 @@ class ReporteGrupo
 		return $pregunta->obtenerRespuesta($busqueda);
 	}
 
-	public function descargar()
+	public function descargar($nombre)
 	{
-		$this->pdf->descarga($this->pdf);
+		$this->pdf->descarga($this->pdf,$nombre);
 	}
 
 	public function getPDF()

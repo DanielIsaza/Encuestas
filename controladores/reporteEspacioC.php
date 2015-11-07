@@ -15,18 +15,22 @@ if(isset($_POST['secondChoice']))
 {	
 	$grupo = new Grupo();
 	$grupos = $grupo->buscarGrupos($_POST['secondChoice']);
-	$reporte = new ReporteGrupo();
-	
-	for($i=0;$i<count($grupos);$i++)
-	{
-		$reporte->generarReporte($grupos[$i]['pk']);
-	}
 
-	$pdf = $reporte->getPDF();
-
-	if(!is_null($pdf))
+	if(count($grupos)>0)	
 	{
-		$reporte->descargar($pdf);
+		$reporte = new ReporteGrupo();
+
+		for($i=0;$i<count($grupos);$i++)
+		{
+			$reporte->generarReporte($grupos[$i]['pk']);
+		}
+
+		$pdf = $reporte->getPDF();
+
+		if(!is_null($pdf))
+		{
+			$reporte->descargar('Reporte_Por_Espacio_Academico');
+		}
 	}
 }
 ?>
