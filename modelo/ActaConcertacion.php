@@ -64,4 +64,20 @@ Class ActaConcertacion extends Modelo
         }
      	return $datos;
     }
+
+    public function buscarGrupo($idGrupo)
+    {
+      $sql="SELECT idActaConcertacion 
+            FROM actaconcertacion WHERE Grupo_idGrupo=".$idGrupo;
+
+      $consulta = $this->query($sql);
+      $datos = array();
+      $i=0;
+        while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
+        {
+          $datos[$i] = $dato['idActaConcertacion'];
+          $i++;
+        }
+      return $datos; 
+    }
 }

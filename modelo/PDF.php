@@ -76,6 +76,16 @@ class PDF extends FPDF
         return $nombreImagen;
     }
 
+    function setObservaciones($datos,$pdf)
+    {
+        //ubicacion
+        $pdf->SetX(30);
+        //asignar tipo y tamaño de letra
+        $pdf->setFont('Times','',13);
+        //Se agrega en una multicelda (para mantener el contenido en el margen) el contenido del enunciado 
+        $pdf->Multicell(0,6,$datos['respuesta'],0,7);
+    }
+
     function titulo($datos,$pdf)
     {
         //se inserta el titulo en el pdf, nombre del espacio academico
@@ -117,9 +127,9 @@ class PDF extends FPDF
     {
         array_map('unlink', glob("../img/temp/*"));
         //Se descarga el pdf con un nombre
-       // $pdf->Output('reporte1.pdf','D');
+        $pdf->Output('reporte1.pdf','D');
         //Codigo que visualiza el pdf en el navegador ---> 
-        $pdf->Output();
+        //$pdf->Output();
     }
 }
 ?>

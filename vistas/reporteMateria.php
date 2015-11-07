@@ -1,4 +1,4 @@
-<?php include_once("../controladores/indexC.php");?>
+<?php include_once("../controladores/reporteEspacioC.php");?>
 <!doctype>
 <!-- Vista para el acta de socializacion del microcurriculo-->
 <html>
@@ -32,10 +32,7 @@
           
           /*arreglos para materias y sus respectivos items*/
           var arrMaterias = new Array(<?php for($i=0;$i<count($datos2);$i++){ if($i<(count($datos2)-1)){ echo json_encode($datos2[$i]).','; }else{ echo json_encode($datos2[$i]);}}?> ) 
-
-          /*se llenan los arreglos para los grupos*/
-          var arrGrupos = new Array(<?php for($i=0;$i<count($datos3);$i++){ if($i<(count($datos3)-1)){ echo json_encode($datos3[$i]).','; }else{ echo json_encode($datos3[$i]);}}?>);
-            
+   
           //metodo que  llena las opciones de las listas despeglables segun la seleccion del usuario
           function selectChange(control, controlToPopulate, ItemArray, GroupArray)
           {
@@ -92,7 +89,7 @@
                         </div>
                 <section  class="contenedorCentrado">
                 	<!--boton que redirecciona al formulario acta de socializacion-->
-                   	<button class="boton" type="submit" formaction="actaSocializacion.php">Continuar</button>
+                   	<button class="boton" type="submit">Continuar</button>
                 </section>
 			</form>
 		</div>

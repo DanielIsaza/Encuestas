@@ -35,12 +35,12 @@ Class Pregunta extends Modelo
           '".$data['respuesta']."',
           ".$data['idActa'].")";
 		
-		$consulta = $this->query($sql);
+		      $consulta = $this->query($sql);
        }
 
        public function buscarInfoPregunta($idGrupo)
        {
-       	 $sql= "SELECT espacioacademico.nombre,grupo.NumeroGrupo,docente.nombreDocente
+       	 $sql= "SELECT espacioacademico.nombre,grupo.NumeroGrupo,docente.nombreDocente,grupo.idGrupo 
        	 		 FROM grupo JOIN espacioacademico ON espacioacademico.idEspacioAcademico=grupo.EspacioAcademico_idEspacioacademico
        	 		  JOIN docente ON docente.idDocente = grupo.Docente_idDocente WHERE grupo.idGrupo =".$idGrupo;
        	 $consulta = $this->query($sql);
@@ -52,12 +52,15 @@ Class Pregunta extends Modelo
         	$datos[$i]['espacioAcademico'] = $dato['nombre'];
         	$datos[$i]['numeroGrupo'] = $dato['NumeroGrupo'];
         	$datos[$i]['docente'] = $dato['nombreDocente'];
+          $datos[$i]['idGrupo'] = $dato['idGrupo'];
+
         	$i++;
         }
         return $datos;
        }
-
-
+       /*
+       *Metodo que permite contar la cantidad de respuestas de un tipo para determinada pregunta
+       */
        public function cantPreguntas($datos)
        {
        	 $sql="SELECT count(respuesta) from grupo join actaconcertacion on grupo.idGrupo = actaconcertacion.Grupo_idGrupo 
@@ -65,6 +68,7 @@ Class Pregunta extends Modelo
               where idgrupo=".$datos['idGrupo']." and numeroActaConcertacion = ".$datos['tipoActa']."
               and numeroPregunta=".$datos['numeroPregunta']."  
               and respuesta=".$datos['tipoRespuesta'];
+       
        	$consulta = $this->query($sql);
         
        	$datos = array();
@@ -76,4 +80,24 @@ Class Pregunta extends Modelo
         }
         return $datos;  
        }
+       /**
+       *Metodo que permite obtener el valor de las respuestas ingresadas
+       */
+       public function obtenerRespuesta($datos)
+       {
+          $sql="SELECT respuesta from grupo join actaconcertacion on grupo.idGrupo = actaconcertacion.Grupo_idGrupo 
+              join pregunta on actaconcertacion.idActaConcertacion = pregunta.ActaConcertacion_idActaConcertacion 
+              where idgrupo=".$datos['idGrupo']." and numeroPregunta=".$datos['numeroPregunta'];
+
+              $consulta = $this->query($sql);
+          
+          $datos = array();
+          $i=0;
+          while($dato = $consulta->fetch(PDO::FETCH_BOTH))
+          {
+            $datos[$i]['respuesta'] = $dato['respuesta'];
+            $i++;
+          }
+          return $datos;
+        }
 }

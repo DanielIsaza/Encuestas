@@ -25,7 +25,7 @@ Class Grupo extends Modelo
 		$correoElectronico = 0;
 	}
 	/**
-	*Lista de los espacios academicos presentes en la bd
+	*Lista de los grupos presentes en la bd
 	**/
 	function listarGrupos()
 	{
@@ -39,6 +39,26 @@ Class Grupo extends Modelo
         	$datos[$i]['pk'] = $dato['idGrupo'];
         	$datos[$i]['nombre'] = $dato['NumeroGrupo'];
         	$datos[$i]['depende'] = $dato['EspacioAcademico_idEspacioAcademico'];
+        	
+        	$i++;
+        }
+
+        return $datos;
+	}
+	/**
+	*Lista los grupos de un espacio academico
+	*/
+	function buscarGrupos($idEspacioAcademico)
+	{
+		$sql="SELECT idGrupo,NumeroGrupo,EspacioAcademico_idEspacioAcademico FROM grupo
+				WHERE EspacioAcademico_idEspacioAcademico= ".$idEspacioAcademico;
+        $consulta = $this->query($sql);
+     	$datos = array();
+        $i=0;
+        while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
+        {
+        	$datos[$i] = array();
+        	$datos[$i]['pk'] = $dato['idGrupo'];
         	
         	$i++;
         }
