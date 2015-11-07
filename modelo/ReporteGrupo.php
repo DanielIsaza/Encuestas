@@ -14,6 +14,11 @@ class ReporteGrupo
 	public function ReporteGrupo()
 	{
 		$this->pdf = new PDF(); 
+		 #Establecemos los márgenes izquierda, arriba y derecha: 
+        $this->pdf->SetMargins(30, 25,30); 
+
+        #Establecemos el margen inferior: 
+        $this->pdf->SetAutoPageBreak(true,25); 
 	}
 
 	public function generarReporte($idGrupo)
@@ -46,9 +51,8 @@ class ReporteGrupo
 				$this->pdf->crear($preguntas[$i],$resp[0],$resp[1],$this->pdf);
 			}
 
-			$this->pdf->setSubtitulo('Observaciones',$this->pdf);
 			$observaciones = $this->getObservaciones($pregunta,$idGrupo);
-
+			$this->pdf->setSubtitulo('Observaciones',$this->pdf);
 			for($i=0;$i<count($observaciones);$i++)
 			{
 				$this->pdf->setObservaciones($observaciones[$i],$this->pdf);

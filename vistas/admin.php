@@ -1,4 +1,4 @@
-<?php include("../controladores/PdfC.php"); ?>
+<?php include("../controladores/reporteProgramaC.php"); ?>
 <!doctype>
 <!--vista principal del administrador-->
 <html>
@@ -32,7 +32,7 @@
     			<h2>Aqu&iacute; puede generar los reportes</h2>
     			<div>
     				<h3>Generar reporte completo (Todos los espacios academicos)</h3>
-    				<button class="boton" name="reporteGeneral" type="submit" >Generar</button>
+    				<button class="boton" name="reporteGeneral" type="submit" id="reporteGeneral" >Generar</button>
     			</div>
     			<div>
     				<h3>Generar reporte por espacio academico</h3>

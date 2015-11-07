@@ -38,7 +38,6 @@ class PDF extends FPDF
     function setTitulo($t)
     {
         $this->title = $t;
-        $this->AddPage();
         $this->SetFont('Times','',12);
         $this->SetX(30);
     }
@@ -88,12 +87,14 @@ class PDF extends FPDF
 
     function titulo($datos,$pdf)
     {
-        //se inserta el titulo en el pdf, nombre del espacio academico
-        $pdf->setTitle('Reporte '.$datos[0]['espacioAcademico']);
         //Se agrega la pagina 
         $pdf->AddPage();
         // Se agrega el pie de pagina con el numero de pagina 
         $pdf->AliasNbPages();
+
+        $pdf->SetFont('Times','B',15);
+        $pdf->SetX(40);
+        $pdf->Multicell(0,0,$datos[0]['espacioAcademico'],0,'C');
         //se define un nuevo tipo y tamaño de letra para los subtitulos
         $pdf->SetFont('Times','B',14);
         //Se define la aliniacion horizontal que tendran en la hoja
@@ -118,9 +119,9 @@ class PDF extends FPDF
         //Se general el grafico respectivo con las respuestas de la pregunta
         $nombre= $pdf->grafico($si,$no);
         //Se inserta el  grafico en el pdf
-        $pdf->Cell("", "", $pdf->Image($nombre, $pdf->GetX()+33,$pdf->GetY()),'LR',0,'R');
+        $pdf->Cell("", "", $pdf->Image($nombre, $pdf->GetX()+23,$pdf->GetY()),'LR',0,'R');
         //Se da un espacio entre los subtitulos y el contenido del reporte
-        $pdf->Ln(93);
+        $pdf->Ln(94);
     }
 
     function descarga($pdf)

@@ -51,4 +51,20 @@ Class EspacioAcademico extends Modelo
         }
         return $datos;
 	}
+
+	function espaciosPorSemestre($idSemestre)
+	{	
+		$sql="SELECT idEspacioAcademico,nombre,Semestre_idSemestre FROM espacioacademico
+				WHERE Semestre_idSemestre =".$idSemestre;
+
+        $consulta = $this->query($sql);
+        $datos = array();
+        $i=0;
+        while($dato = $consulta->fetch(PDO::FETCH_BOTH))
+        {
+        	$datos[$i]['pk'] = $dato['idEspacioAcademico'];
+        	$i++;
+        }
+        return $datos;
+	}
 }
