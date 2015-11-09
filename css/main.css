@@ -84,6 +84,12 @@ form {
         	height: 9%;
 
         }
+        #logout{
+            background: white;
+            color: Blue;
+            width: 20%;
+            height: 9%;
+        }
         #nombre{
         	width: 50%;
         	height: 5%;
@@ -95,6 +101,12 @@ form {
         	height: 5%;
         	font-size: 15px;
 			border-radius:10px;
+        }
+        #username, #pass{
+            width: 50%;
+            height: 5%;
+            font-size: 15px;
+            border-radius:10px;
         }
 #firstChoice, #secondChoice, #thirdChoice {
 	font-size: 15px;

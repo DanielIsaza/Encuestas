@@ -1,4 +1,6 @@
-<?php include("../controladores/reporteProgramaC.php"); ?>
+<?php include("../controladores/reporteProgramaC.php"); 
+	  include("../controladores/loginC.php");
+?>
 <!doctype>
 <!--vista principal del administrador-->
 <html>
@@ -26,9 +28,36 @@
 				<h2>Bienvenido administrador</h2>
 			</div>
 		</header>
+
+		<!-- división con el login de la pag-->
+    	<div class="row">
+    		<?php
+				if(!isset($_COOKIE["chsm"]))
+				{
+			?>
+    		<form action="#" method="POST">
+				<div class="form-group">
+					<label for="username"><h3>Username:</h3></label>
+					<input type="text" placeholder="Ingrese su username" name="username" id="username" required/>
+				</div>	
+				<div class="form-group">
+					<label for="pass"><h3>Contraseña:</h3></label>
+					<input type="text" placeholder="Ingrese su contraseña" name="pass" id="pass" required/>
+				</div>	
+				<button type="submit" id="login" name="login">Iniciar Sesión</button>
+			</form>
+
+    	</div>
+    	<?php
+			}else
+			{
+		?>
+		
+		<!--<a href="/Encuestas/vistas/admin">Cerrar Sesi&oacute;n</a>-->
 		<!-- división con el contenido de la pag-->
     	<div class="row">
     		<form action="#" method="post">
+    			
     			<h2>Aqu&iacute; puede generar los reportes</h2>
     			<div>
     				<h3>Generar reporte completo (Todos los espacios academicos)</h3>
@@ -42,7 +71,11 @@
     				<h3>Generar reporte por grupo</h3>
     				<button class="boton" name="hola" type="reporteGrupo" formaction="reporteGrupo.php" >Continuar</button>
     			</div>
+    			<button type="submit" id="logout" name="logout">Cerrar Sesi&oacute;n</button>
     		</form>
 		</div>
+		<?php
+			}
+		?>
 	</body>
 </html>

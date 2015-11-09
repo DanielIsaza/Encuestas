@@ -21,9 +21,8 @@ class Administrador extends Modelo
 	public function isAdmin($data)
 	{
 		$sql = "SELECT login FROM administrador WHERE 
-				login =".$data['login']." and password=".$data['pass'];
+				login ='".$data['login']."' and password='".$data['pass']."'";
 		$consulta = $this->query($sql);
-
 		$datos=array();
      	$i=0;
         while($dato = $consulta->fetch(PDO::FETCH_BOTH))
