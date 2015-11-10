@@ -106,6 +106,10 @@
                     <button class="boton" type="submit" formaction="actaSocializacion.php?">Continuar</button>
                 </section>
 			</form>
+            
     	</div>
+        <section id="contIzquierda">
+            <a href="admin.php">Administrador</a>
+        </section>
 	</body>
 </html>

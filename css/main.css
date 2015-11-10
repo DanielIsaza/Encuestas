@@ -108,6 +108,10 @@ form {
             font-size: 15px;
             border-radius:10px;
         }
+#contIzquierda{
+    text-align: right;
+    padding: 2%;
+}
 #firstChoice, #secondChoice, #thirdChoice {
 	font-size: 15px;
 	border-radius:10px;

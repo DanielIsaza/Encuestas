@@ -21,7 +21,9 @@ if(isset($_POST['nombre']))
    ingresarPreguntas($act1[0]);
    //Ingreso preguntas Acta 1
    ingresarPreguntas2($act2[0]);
-   header ( "Location: Index.php" );
+   echo "<script>alert('Su acta ha sido guardada, haga click para continuar'); window.location='Index.php';</script>";
+   //sleep(2);
+  // header ( "Location: Index.php" );
 }
 /**
 *Metodo que permite ingresar el estudiante a la base de datos
