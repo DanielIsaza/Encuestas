@@ -28,8 +28,10 @@
 		</header>	
 		<!--division que contiene el formulario de la pagina-->
 			<div class="row">
+
 				<!--formulario que contene las preguntas del acta de socializacion-->
 				<form method="post" data-abide>
+					<div class="actaSociacion">
 					<!--datos personales del estudiante-->
 					<h2><B>Datos estudiante:</B></h2>
 					
@@ -44,92 +46,128 @@
 					<h2><B>Acta de socializaci&oacute;n del microcurr&iacute;culo</B><br></h2>
 					<p><B>Responda SI o NO a las siguentes preguntas:</B></p>
 					
-					
-						<article for="pregunta1"><h3><B>1.</B> &#191;El profesor socializ&oacute; el microcurr&iacute;culo en el Espacio virtual del Espacio Acad&eacute;mico&#63;</h3>
+					<fieldset>
+						<legend><h3><B>Pregunta 1</B></h3></legend>
+						<article for="pregunta1"><h3>&#191;El profesor socializ&oacute; el microcurr&iacute;culo en el espacio virtual del espacio acad&eacute;mico&#63;</h3>
 						<p>A trav&eacute;s de un foro, una actividad, etc.</p>
-						<select id="pregunta1" name="pregunta1" required>
-							<option value="" selected="selected">- selecciona -</option>
-							<option value="1">SI</option>
-							<option value="0">NO</option>
-						</select></article>
-					
-					
-						<article for="pregunta2"><h3><B>2.</B> &#191;El microcurr&iacute;culo define el n&uacute;mero de Cr&eacute;ditos del Espacio Acad&eacute;mico&#63;</h3>
-						<select id="pregunta2" name="pregunta2" required>
-							<option value="" selected="selected">- selecciona -</option>
-							<option value="1">SI</option>
-							<option value="0">NO</option>
-						</select></article>
-					
-						<article for="pregunta3"><h3><B>3. </B>&#191;El microcurr&iacute;culo define los Objetivos del Espacio Acad&eacute;mico&#63;</h3>
-						<select id="pregunta3" name="pregunta3" required>
-							<option value="" selected="selected">- selecciona -</option>
-							<option value="1">SI</option>
-							<option value="0">NO</option>
-						</select></article>
-					
-						<article for="pregunta4"><h3><B>4. </B>&#191;El microcurr&iacute;culo define los Temas a tratar durante el Espacio Acad&eacute;mico&#63;</h3>
-						<select id="pregunta4" name="pregunta4" required>
-							<option value="" selected="selected">- selecciona -</option>
-							<option value="1">SI</option>
-							<option value="0">NO</option>
-						</select></article>
-					
-						<article for="pregunta5"><h3><B>5. </B>&#191;El microcurr&iacute;culo define el plan de evaluaci&oacute;n del Espacio Acad&eacute;mico, 
+						<label>
+							<input type="radio" name="p1" value="1">SI
+						</label>
+						<label>
+							<input type="radio" name="p1" value="0">NO
+						</label>
+						</article>
+					</fieldset>
+					<fieldset>
+						<legend><h3><B>Pregunta 2</B></h3></legend>
+						<article for="pregunta2"><h3>&#191;El microcurr&iacute;culo define el n&uacute;mero de cr&eacute;ditos del espacio acad&eacute;mico&#63;</h3>
+						<label>
+							<input type="radio" name="p2" value="1">SI
+						</label>
+						<label>
+							<input type="radio" name="p2" value="0">NO
+						</label>
+						</article>
+					</fieldset>
+					<fieldset>
+						<legend><h3><B>Pregunta 3</B></h3></legend>
+						<article for="pregunta3"><h3>&#191;El microcurr&iacute;culo define los objetivos del espacio acad&eacute;mico&#63;</h3>
+						<label>
+							<input type="radio" name="p3" value="1">SI
+						</label>
+						<label>
+							<input type="radio" name="p3" value="0">NO
+						</label>
+						</article>
+					</fieldset>
+					<fieldset>
+						<legend><h3><B>Pregunta 4</B></h3></legend>
+						<article for="pregunta4"><h3>&#191;El microcurr&iacute;culo define los temas a tratar durante el espacio acad&eacute;mico&#63;</h3>
+						<label>
+							<input type="radio" name="p4" value="1">SI
+						</label>
+						<label>
+							<input type="radio" name="p4" value="0">NO
+						</label>
+						</article>
+					</fieldset>
+					<fieldset>
+						<legend><h3><B>Pregunta 5</B></h3></legend>
+						<article for="pregunta5"><h3>&#191;El microcurr&iacute;culo define el plan de evaluaci&oacute;n del espacio acad&eacute;mico, 
 							de acuerdo con el art&iacute;culo 45 del Estatuto Estudiantil&#63;</h3>
-						<select id="pregunta5" name="pregunta5" required>
-							<option value="" selected="selected">- selecciona -</option>
-							<option value="1">SI</option>
-							<option value="0">NO</option>
-						</select></article>
-					
-						<article for="pregunta6"><h3><B>6. </B>&#191;Est&aacute; usted de acuerdo con las condiciones establecidas en el microcurr&iacute;culo&#63;</h3>
-						<select id="pregunta6" name="pregunta6" required>
-							<option value="" selected="selected">- selecciona -</option>
-							<option value="1">SI</option>
-							<option value="0">NO</option>
-						</select> </article>
-					</h3>
-					<!--preguntas-->
+						<label>
+							<input type="radio" name="p5" value="1">SI
+						</label>
+						<label>
+							<input type="radio" name="p5" value="0">NO
+						</label></article>
+					</fieldset>
+					<fieldset>
+						<legend><h3><B>Pregunta 6</B></h3></legend>
+						<article for="pregunta6"><h3>&#191;Est&aacute; usted de acuerdo con las condiciones establecidas en el microcurr&iacute;culo&#63;</h3>
+						<label>
+							<input type="radio" name="p6" value="1">SI
+						</label>
+						<label>
+							<input type="radio" name="p6" value="0">NO
+						</label></article>
+					</fieldset>
+					</div>
+					<!--</h3>
+					preguntas-->
+					<div class="actaConcertacion">
 					<h2><B>Acta de concertacion acad&eacute;mica</B><br></h2>
 					<p><B>Responda SI o NO a las siguentes preguntas:</B></p>
-
-					<article for="pregunta7"><h3><B>1. </B>&#191;El profesor ha cumplido con la atenci&acute;n de asesor&iacute;as e inquietudes 
-						en los tiempos establecidos en el microcurriculo&#63;</h3>
-					<select id="pregunta7" name="pregunta7" required>
-						<option value="" selected="selected">- selecciona -</option>
-						<option value="1">SI</option>
-						<option value="0">NO</option>
-					</select></article>
-			
-					<article for="pregunta8"><h3><B>2. </B>&#191;El profesor ha cumplido con la apertura de las actividades y 
-						los recursos seg&uacute;n lo establecido en el cronograma del espacio acad&eacute;mico&#63;</h3>
-					<select id="pregunta8" name="pregunta8" required>
-						<option value="">- selecciona -</option>
-						<option value="1">SI</option>
-						<option value="0">NO</option>
-					</select></article>
-			
-					<article for="pregunta9"><h3><B>3. </B>&#191;El profesor ha dispuesto los recursos apropiados para desarrollar 
-						los contenidos del espacio acad&eacute;mico&#63;</h3>
-					<select id="pregunta9" name="pregunta9" required>
-						<option value="" selected="selected">- selecciona -</option>
-						<option value="1">SI</option>
-						<option value="0">NO</option>
-					</select></article>
-			
-					<article for="pregunta10"><h3><B>4. </B>&#191;El profesor ha publicado en el libro de calificaciones de la plataforma, 
-						la evaluaci&oacute;n y retroalimentaci&oacute;n <br>a las actividades de los estudiantes, en los tiempos 
-						establecidos en el Estatuto Estudiantil&#63;</h3>
-						<select id="pregunta10" name="pregunta10" required>
-						<option value="" selected="selected">- selecciona -</option>
-						<option value="1">SI</option>
-						<option value="0">NO</option>
-					</select></article>
+					<fieldset>
+						<legend><h3><B>Pregunta 1</B></h3></legend>
+						<article for="pregunta7"><h3>&#191;El profesor ha cumplido con la atenci&oacute;n de asesor&iacute;as e inquietudes 
+							en los tiempos establecidos en el microcurr&iacute;culo&#63;</h3>
+						<label>
+							<input type="radio" name="p7" value="1">SI
+						</label>
+						<label>
+							<input type="radio" name="p7" value="0">NO
+						</label></article>
+					</fieldset>
+					<fieldset>
+						<legend><h3><B>Pregunta 2</B></h3></legend>
+						<article for="pregunta8"><h3>&#191;El profesor ha cumplido con la apertura de las actividades y 
+							los recursos seg&uacute;n lo establecido en el cronograma del espacio acad&eacute;mico&#63;</h3>
+						<label>
+							<input type="radio" name="p8" value="1">SI
+						</label>
+						<label>
+							<input type="radio" name="p8" value="0">NO
+						</label></article>
+					</fieldset>
+					<fieldset>
+						<legend><h3><B>Pregunta 3</B></h3></legend>
+						<article for="pregunta9"><h3>&#191;El profesor ha dispuesto los recursos apropiados para desarrollar 
+							los contenidos del espacio acad&eacute;mico&#63;</h3>
+						<label>
+							<input type="radio" name="p9" value="1">SI
+						</label>
+						<label>
+							<input type="radio" name="p9" value="0">NO
+						</label></article>
+					</fieldset>
+					<fieldset>
+						<legend><h3><B>Pregunta 4</B></h3></legend>
+						<article for="pregunta10"><h3>&#191;El profesor ha publicado en el libro de calificaciones de la plataforma, 
+							la evaluaci&oacute;n y retroalimentaci&oacute;n a las actividades de los estudiantes, en los tiempos 
+							establecidos en el estatuto estudiantil&#63;</h3>
+						<label>
+							<input type="radio" name="p10" value="1">SI
+						</label>
+						<label>
+							<input type="radio" name="p10" value="0">NO
+						</label></article>
+					</fieldset>
+					</div>
 					<!--observaciones-->
 					<h2>Observaciones:</h2>
 					<h3>
-						<label for="observaciones">Si tiene algo adicional que desee 
+						<label for="observaciones">Si tiene algo adicional que dese&eacute; 
 							compartir con nosotros puede escribir sus comentarios<br></label>
                     	<textarea name="observaciones" id="observaciones" placeholder="Escriba sus observaciones"></textarea>
 					</h3>
@@ -137,9 +175,8 @@
 					<section class="contenedorCentrado">
 						<!--boton que redirecciona al formulario acta de concertacion-->
 						<button class="boton" type="submit" >Continuar</button>
-					</section>
-				</form>
-				
+					</section>		
+				</form>	
 			</div>
 		
 	</body>
