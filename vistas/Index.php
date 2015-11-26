@@ -22,8 +22,10 @@
 		<header>
 			<!-- división que contiene el encabezado de la pagina-->
 			<div class="encabezado">
-				<h1><B>Programa CIDBA</B></h1>
-				<h2>Universidad del Quind&iacute;o</h2>
+                <img class="img1" src="../img/logouq.jpg">
+                <h1><B>Programa CIDBA</B></h1>
+                <h2>Universidad del Quind&iacute;o</h2>
+                <img class="img2" src="../img/logo.jpg">
 			</div>
 		</header>
 		<!-- división que contiene la lista despegable de la pagina-->
