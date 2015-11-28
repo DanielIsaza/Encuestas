@@ -1,6 +1,6 @@
 <?php include_once("../controladores/reporteEspacioC.php");?>
 <!doctype>
-<!-- Vista para el acta de socializacion del microcurriculo-->
+<!-- Vista para el reporte de espacios academicos-->
 <html>
 	<!--cabecera de la pagina-->
 	<head>

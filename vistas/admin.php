@@ -44,7 +44,7 @@
 				</div>	
 				<div class="form-group">
 					<label for="pass"><h3>Contraseña:</h3></label>
-					<input type="text" placeholder="Ingrese su contraseña" name="pass" id="pass" required/>
+					<input type="password" placeholder="Ingrese su contraseña" name="pass" id="pass" required/>
 				</div>	
 				<button type="submit" id="login" name="login">Iniciar Sesión</button>
 			</form>
@@ -63,15 +63,23 @@
     			<h2>Aqu&iacute; puede generar los reportes</h2>
     			<div>
     				<h3>Generar reporte completo (Todos los espacios academicos)</h3>
-    				<button class="boton" name="reporteGeneral" type="submit" id="reporteGeneral" >Generar</button>
+    				<button class="botonP" name="reporteGeneral" type="submit" id="reporteGeneral" >Generar</button>
     			</div>
     			<div>
     				<h3>Generar reporte por espacio academico</h3>
-    				<button class="boton" name="reporteMaterias" type="submit" formaction="reporteMateria.php" >Continuar</button>
+    				<button class="botonP" name="reporteMaterias" type="submit" formaction="reporteMateria.php" >Generar</button>
     			</div>
     			<div>
     				<h3>Generar reporte por grupo</h3>
-    				<button class="boton" name="hola" type="reporteGrupo" formaction="reporteGrupo.php" >Continuar</button>
+    				<button class="botonP" name="hola" type="reporteGrupo" formaction="reporteGrupo.php" >Generar</button>
+    			</div>
+    			<div>
+    				<h3>Generar reporte por profesor</h3>
+    				<button class="botonP" name="reporteProfesor" type="reporteProfesor" formaction="reporteProfesor.php" >Generar</button>
+    			</div>
+    			<div>
+    				<h3>Generar reporte por periodo acad&eacute;mico</h3>
+    				<button class="botonP" name="reporteProfesor" type="reportePeriodo" formaction="reportePeriodo.php" >Generar</button>
     			</div>
     			<button type="submit" id="logout" name="logout">Cerrar Sesi&oacute;n</button>
     		</form>

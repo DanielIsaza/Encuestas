@@ -80,28 +80,34 @@
     		<form name= myChoices method="post" action="actaSocialiacion.php">
                 <h2>Seleccione su grupo</h2>
                 <!--se organizan los elementos del formulario en divs que contienen las listas despegables-->
-                        <div>
-                            <h3>1. Seleccione el semestre del espacio acad&eacute;mico</h3>
-                            <!--primer cuadro despegable para la seleccion de semestre-->
-    						<select id=firstChoice name="firstChoice" onchange="selectChange(this, myChoices.secondChoice, arrMaterias, arrMaterias);" required>
-								<option value="" SELECTED>-Selecciona-</option>
-                                <?php for($i=0;$i<count($datos);$i++){ ?>
-								<option value="<?php echo $datos[$i]['id']; ?>"><?php echo $datos[$i]['nombre']?></option>
+                <div>
+                    <h3>1. Seleccione el plan curricular al que pertenece</h3>
+                    <select id=planCurricular name="planCurricular" onchange="" required>
+                        <option value="" SELECTED>-Selecciona-</option>
+                    </select>
+                </div>
+                <div>
+                    <h3>2. Seleccione el semestre del espacio acad&eacute;mico</h3>
+                    <!--primer cuadro despegable para la seleccion de semestre-->
+					<select id=firstChoice name="firstChoice" onchange="selectChange(this, myChoices.secondChoice, arrMaterias, arrMaterias);" required>
+    					<option value="" SELECTED>-Selecciona-</option>
+                            <?php for($i=0;$i<count($datos);$i++){ ?>
+	       						<option value="<?php echo $datos[$i]['id']; ?>"><?php echo $datos[$i]['nombre']?></option>
 							    <?php  } ?>
-							</select>
-                        </div>
-    					<div>
-                            <h3>2. Seleccione el espacio acad&eacute;mico</h3>
-                            <!--segundo cuadro despegable para la seleccion del espacio academico-->
-						    <select id=secondChoice name="secondChoice" onchange="selectChange(this, myChoices.thirdChoice, arrGrupos, arrGrupos);" required>
-						    </select>
-                        </div>
-                        <div>
-                            <h3>3. Seleccione el grupo del espacio acad&eacute;mico al cual esta inscrito</h3>
-                            <!--tercer cuadro despegable para la seleccion del grupo-->
-						    <select id=thirdChoice name="thirdChoice" required>
-						    </select>
-                        </div>
+					</select>
+                </div>
+    			<div>
+                    <h3>3. Seleccione el espacio acad&eacute;mico</h3>
+                    <!--segundo cuadro despegable para la seleccion del espacio academico-->
+				    <select id=secondChoice name="secondChoice" onchange="selectChange(this, myChoices.thirdChoice, arrGrupos, arrGrupos);" required>
+					</select>
+                </div>
+                <div>
+                    <h3>4. Seleccione el grupo del espacio acad&eacute;mico al cual esta inscrito</h3>
+                    <!--tercer cuadro despegable para la seleccion del grupo-->
+				    <select id=thirdChoice name="thirdChoice" required>
+				    </select>
+                </div>
     					
                 <section  class="contenedorCentrado">
                     <!--boton que redirecciona al formulario acta de socializacion-->
@@ -113,5 +119,43 @@
         <section id="contIzquierda">
             <a href="admin.php">Administrador</a>
         </section>
+
+         <footer>
+        <!-- Footer -->
+
+        <div>
+            <section id="uniquindio">
+                <header>
+                    <h3>Universidad del Quind&iacute;o</h3>
+                </header>
+                <p> <B>Informaci&oacute;n</B></p>
+                <ul>
+                    <li>Carrera 15 Calle 12 Norte<br>Armenia, Quind&iactue;o, Colombia</li>
+                    <li>Tel.: +57 (6) 7359300</li>
+                </ul>
+            </section>
+            <section id="cidba">
+                <header>
+                    <h3>Cidba</h3>
+                </header>
+                <p> <B>Informaci&oacute;n</B></p>
+                <ul>
+                    <li>Bloque de Ciencias B&aacute;sica Humanas, Edificio A, Piso 4<br>Universidad del Quind&iacute;o</li>
+                    <li>Tel.: 57 - 6 - 7359300 Ext. 339.</li>
+                </ul>
+            </section>
+            <section id="creada">
+                <header>
+                    <h3>P&aacute;gina web creada por:</h3>
+                </header>
+                <ul>
+                    <li>Maria Fernanda Osorio Zambrano</li>
+                    <li>Jose Daniel Isaza Hernandez</li>
+                    <p>Estudiantes Ingenier&iacute;a de Sistemas y Computaci&oacute;n <br> Universidad del Quind&iacute;o</p>
+                </ul>
+            </section>
+        </div>
+    
+    </footer>
 	</body>
 </html>

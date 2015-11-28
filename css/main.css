@@ -103,6 +103,13 @@ form {
         	height: 9%;
 
         }
+        form .botonP{
+            text-align: center;
+            background: #007907;
+            width: 10%;
+            height: 9%;
+
+        }
         #logout{
             background: white;
             color: Blue;
@@ -141,12 +148,44 @@ form {
 	text-align: center;
 
 }
-	/*.boton{
-		padding: 2%;
-		margin-right: auto;
-		margin-left: auto;	
-		text-align:center;
-		margin-left: auto;
-		border: 2px solid black;
-		border-radius:50px;
-	}*/
+/*------------------------------
+=FOOTER
+------------------------------*/
+footer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: #222;
+}
+
+    footer div {
+        display: table;
+        margin: 0 auto;
+        padding: 44px 0;
+        width: 940px;
+        color: #777;
+    }
+    
+        footer div section {
+            display: table-cell;
+            width: 300px;
+        }
+        
+        footer div #uniquindio, footer div #cidba {
+            padding-right: 20px;
+        }
+        
+    footer h3 {
+        color: #FFF;
+    }
+    
+    
+    footer ul {
+        margin: 0 0 0 40px;
+        list-style: square;
+        color: #565656;
+    }
+    
+        footer ul li a {
+            display: block;
+        }
