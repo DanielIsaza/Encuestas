@@ -26,7 +26,7 @@ Class Semestre extends Modelo
 	*/
 	function listarSemestres()
 	{
-		$sql = "SELECT idSemestre,nombreSemestre 
+		$sql = "SELECT idSemestre,nombreSemestre,PlanEstudio_idPlanEstudio 
 					FROM semestre";
 
         $consulta = $this->query($sql);
@@ -35,8 +35,9 @@ Class Semestre extends Modelo
         while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
         {
         	$datos[$i] = array();
-        	$datos[$i]['id'] = $dato['idSemestre'];
+        	$datos[$i]['pk'] = $dato['idSemestre'];
         	$datos[$i]['nombre'] = $dato['nombreSemestre'];
+        	$datos[$i]['depende'] = $dato['PlanEstudio_idPlanEstudio'];
         	$i++;
         }
 

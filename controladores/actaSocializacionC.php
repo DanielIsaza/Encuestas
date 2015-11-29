@@ -3,6 +3,10 @@
 include_once("../modelo/Estudiante.php");
 include_once("../modelo/ActaConcertacion.php");
 include_once("../modelo/Pregunta.php");
+include_once("../modelo/ActaMostrar.php");
+
+$mostrar = new ActaMostrar();
+$opciones = $mostrar->listar();
 
 //Se obtiene el valor del grupo seleccionado 
 $grupoid = $_POST['secondChoice'];
@@ -11,18 +15,28 @@ setcookie("idGrupo",$grupoid,time()+360);
 
 if(isset($_POST['nombre']))	
 {  
-	//Ingreso del estudiante que diligencio las actas
-   $cod = ingresarEstudiante();
-   //Ingreso del acta de socializacion 
-   $act1 = ingresarActa($cod);
-   //Ingreso del acta de concertacion 
-   $act2 =ingresarActa2($cod);
-   //Ingreso preguntas Acta 1
-   ingresarPreguntas($act1[0]);
-   //Ingreso preguntas Acta 1
-   ingresarPreguntas2($act2[0]);
-   echo "<script>alert('Su acta ha sido guardada, haga click para continuar'); window.location='Index.php';</script>";
-   //sleep(2);
+	if($opciones[0]['mostrar']==1)
+	{
+		//Ingreso del estudiante que diligencio las actas
+   		$cod = ingresarEstudiante();
+   		//Ingreso del acta de socializacion 
+   		$act1 = ingresarActa($cod);
+   		//Ingreso preguntas Acta 1
+   		ingresarPreguntas($act1[0]);
+   		echo "<script>alert('Su acta ha sido guardada, haga click para continuar'); window.location='Index.php';</script>";
+	}
+
+	if($opciones[1]['mostrar']==1)
+	{
+		//Ingreso del estudiante que diligencio las actas
+   		$cod = ingresarEstudiante();
+   		//Ingreso del acta de concertacion 
+  		$act2 =ingresarActa2($cod);
+   		//Ingreso preguntas Acta 1
+   		ingresarPreguntas2($act2[0]);
+   		echo "<script>alert('Su acta ha sido guardada, haga click para continuar'); window.location='Index.php';</script>";
+	}
+       //sleep(2);
   // header ( "Location: Index.php" );
 }
 /**
@@ -95,13 +109,15 @@ function ingresarPreguntas($act1)
 	$data[3]['numero']= 4;
 	$data[4]['numero']= 5;
 	$data[5]['numero']= 6;
+	$data[6]['numero']= 12;
 	//Respuesta dada por el estudiante
-	$data[0]['respuesta']= $_POST['pregunta1'];
-	$data[1]['respuesta']= $_POST['pregunta2'];
-	$data[2]['respuesta']= $_POST['pregunta3'];
-	$data[3]['respuesta']= $_POST['pregunta4'];
-	$data[4]['respuesta']= $_POST['pregunta5'];
-	$data[5]['respuesta']= $_POST['pregunta6'];
+	$data[0]['respuesta']= $_POST['p1'];
+	$data[1]['respuesta']= $_POST['p2'];
+	$data[2]['respuesta']= $_POST['p3'];
+	$data[3]['respuesta']= $_POST['p4'];
+	$data[4]['respuesta']= $_POST['p5'];
+	$data[5]['respuesta']= $_POST['p6'];
+	$data[6]['respuesta']= $_POST['observaciones1'];
 	//id del acta a la que pertenecen las respuestas
 	$data[0]['idActa']= $act1;
 	$data[1]['idActa']= $act1;
@@ -109,6 +125,7 @@ function ingresarPreguntas($act1)
 	$data[3]['idActa']= $act1;
 	$data[4]['idActa']= $act1;
 	$data[5]['idActa']= $act1;
+	$data[6]['idActa']= $act1;
 
 	for($i=0;$i<count($data);$i++)
 	{
@@ -124,7 +141,7 @@ function ingresarPreguntas2($act2)
 	$data[1]['numero']= 8;
 	$data[2]['numero']= 9;
 	$data[3]['numero']= 10;
-	$data[4]['numero']= 11;
+	$data[4]['numero']= 12;
 	//Respuesta dada por el estudiante
 	$data[0]['respuesta']= $_POST['pregunta7'];
 	$data[1]['respuesta']= $_POST['pregunta8'];

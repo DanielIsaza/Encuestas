@@ -43,7 +43,10 @@
 					
 						<label for="codigo"><h3>Ingrese su c&oacute;digo (su documento de identidad)</h3></label>
                     	<input name="codigo" id="codigo" type="text" placeholder="Sin puntos, ni comas, ni espacios" required />
-					
+					<?php
+						if($opciones[0]['mostrar']==1)
+						{
+					?>
 					<!--preguntas-->
 					<h2><B>Acta de socializaci&oacute;n del microcurr&iacute;culo</B><br></h2>
 					<p><B>Responda SI o NO a las siguentes preguntas:</B></p>
@@ -114,9 +117,23 @@
 							<input type="radio" name="p6" value="0">NO
 						</label></article>
 					</fieldset>
+					<!--observaciones-->
+					<h2>Observaciones:</h2>
+					<h3>
+						<label for="observaciones">Si tiene algo adicional que dese&eacute; 
+							compartir con nosotros puede escribir sus comentarios<br></label>
+                    	<textarea name="observaciones1" id="observaciones1" placeholder="Escriba sus observaciones"></textarea>
+					</h3>
 					</div>
+					<?php
+						}	
+					?>
 					<!--</h3>
 					preguntas-->
+					<?php
+						if($opciones[1]['mostrar']==1)
+						{
+					?>
 					<div class="actaConcertacion">
 					<h2><B>Acta de concertacion acad&eacute;mica</B><br></h2>
 					<p><B>Responda SI o NO a las siguentes preguntas:</B></p>
@@ -173,6 +190,9 @@
 							compartir con nosotros puede escribir sus comentarios<br></label>
                     	<textarea name="observaciones" id="observaciones" placeholder="Escriba sus observaciones"></textarea>
 					</h3>
+					<?php
+						}	
+					?>
 					<!--seccion que contiene el boton para rediccionar la pagina-->
 					<section class="contenedorCentrado">
 						<!--boton que redirecciona al formulario acta de concertacion-->

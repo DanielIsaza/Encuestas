@@ -2,6 +2,11 @@
 include_once("../modelo/Semestre.php");
 include_once("../modelo/EspacioAcademico.php");
 include_once("../modelo/Grupo.php");
+include_once("../modelo/PlanEstudio.php");
+
+$plan = new PlanEstudio();
+$planes = array();
+$planes = $plan->listarPlanes();
 
 $semestre = new Semestre();
 $datos = array();
