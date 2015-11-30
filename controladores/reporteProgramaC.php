@@ -5,6 +5,7 @@ include_once("../modelo/ReporteGrupo.php");
 include_once("../modelo/EspacioAcademico.php");
 include_once("../modelo/PlanEstudio.php");
 include_once("../modelo/PeriodoAcademico.php");
+include_once("../modelo/ActaMostrar.php");
 
 if(isset($_POST['reporteGeneral']))
 {	
@@ -107,5 +108,24 @@ function grupos($idEspacio,$reporte,$actual)
 			$reporte->generarReporte($grupos[$i]['pk'],$actual);
 		}
 	}
+}
+if(isset($_POST['activarBoton']))
+{
+	$actaMostrar = new ActaMostrar();
+	if($_POST['activar']==0)
+	{
+		$actaMostrar->desactivar();
+	}else {
+		if ($_POST['activar']==1) 
+		{
+			$actaMostrar->activarSocializacion();
+		} else {
+			if ($_POST['activar']==2) {
+				$actaMostrar->activarConcertacion();
+			}
+		}
+		
+	}
+
 }
 ?>

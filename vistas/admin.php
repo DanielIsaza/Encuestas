@@ -59,7 +59,17 @@
     	<div class="row">
     		<form action="#" method="post">
     			
-    			<h2>Aqu&iacute; puede generar los reportes</h2>
+    			<h2><br><B>Aqu&iacute; puede activar una de las actas</B></h2>
+    			<form name= myChoices method="post">
+	    			<select name="activar" required>
+	    				<option value="">-Selecciona-</option>
+	    				<option value="0">Ninguna (desactivar)</option>
+	    				<option value="1">Acta socializaci&oacute;n</option>
+	    				<option value="2">Acta de concertaci&oacute;n</option>
+	    			</select>
+	    			<button class="boton" type="submit" name="activarBoton">Cambiar</button>
+    			</form>
+    			<h2><B>Aqu&iacute; puede generar los reportes</B></h2>
     			<div>
     				<h3>Generar reporte completo (Todos los espacios academicos)</h3>
     				<button class="botonP" name="reporteGeneral" type="submit" id="reporteGeneral" >Generar</button>
