@@ -6,35 +6,30 @@ include_once("../modelo/EspacioAcademico.php");
 include_once("../modelo/Grupo.php");
 include_once("../modelo/Enunciado.php");
 include_once("../modelo/PDF.php");
-include_once("../modelo/PeriodoAcademico.php");
 
-class ReporteGrupo
+class reporteDocente
 {
 	private $pdf;
-	private $periodo;
 
-	public function ReporteGrupo()
+	public function reporteDocente()
 	{
 		$this->pdf = new PDF(); 
-
-		$this->periodo = new PeriodoAcademico();
 		 #Establecemos los márgenes izquierda, arriba y derecha: 
         $this->pdf->SetMargins(30, 25,30); 
 
         #Establecemos el margen inferior: 
-        $this->pdf->SetAutoPageBreak(true,25);
-
+        $this->pdf->SetAutoPageBreak(true,25); 
 	}
 
-	public function generarReporte($idGrupo,$periodo)
+	public function generarReporte($idDocente)
 	{
 		$acta =  new ActaConcertacion();
-		$bool = $acta->buscarGrupo($idGrupo,$periodo);
-		
+		$bool = $acta->buscarDocente($idDocente);
+
 		if((count($bool)) > 0)
 		{
 			$pregunta = new Pregunta();
-		 	$datos = $pregunta->buscarInfoPregunta($idGrupo);
+		 	$datos = $pregunta->buscarInfoPreguntaDocente($idDocente);
 			
 			$enunciado = new Enunciado();
 			$preguntas = $enunciado->listarEnunciados();
@@ -47,26 +42,28 @@ class ReporteGrupo
 
 			for($i=0;$i<(count($preguntas)-6);$i++)
 			{
-				$resp = $this->respuestas($pregunta,$preguntas[$i]['numeroPregunta'],1,$idGrupo);
+				$resp = $this->respuestas($pregunta,$preguntas[$i]['numeroPregunta'],1,$idDocente);
 				$this->pdf->crear($preguntas[$i],$resp[0],$resp[1],$this->pdf);
 			}
 
-			$observaciones = $this->getObservacionesSocializacion($pregunta,$idGrupo);
+			$observaciones = $this->getObservacionesSocializacion($pregunta,$idDocente);
 			$this->pdf->setSubtitulo('Observaciones',$this->pdf);
 			for($i=0;$i<count($observaciones);$i++)
 			{
 				$this->pdf->setObservaciones($observaciones[$i],$this->pdf);
 			}
+
 			$this->pdf->AddPage();
+			
 			$this->pdf->setSubtitulo('Acta Concertacion',$this->pdf);
 			
 			for($i=6;$i<(count($preguntas)-2);$i++)
 			{
-				$resp = $this->respuestas($pregunta,$preguntas[$i]['numeroPregunta'],2,$idGrupo);
+				$resp = $this->respuestas($pregunta,$preguntas[$i]['numeroPregunta'],2,$idDocente);
 				$this->pdf->crear($preguntas[$i],$resp[0],$resp[1],$this->pdf);
 			}
 
-			$observaciones = $this->getObservacionesConcertacion($pregunta,$idGrupo);
+			$observaciones = $this->getObservacionesConcertacion($pregunta,$idDocente);
 			$this->pdf->setSubtitulo('Observaciones',$this->pdf);
 			for($i=0;$i<count($observaciones);$i++)
 			{
@@ -80,40 +77,40 @@ class ReporteGrupo
 	/*
 	*Metodo que busca la cantidad de respuestas afirmativas y negativas de una pregunta
 	*/
-	public function respuestas($pregunta,$num,$tipoActa,$idGrupo)
+	public function respuestas($pregunta,$num,$tipoActa,$idDocente)
 	{
 		$cantidad = array();
-		$busqueda['idGrupo']=$idGrupo;
+		$busqueda['idDocente']=$idDocente;
 		$busqueda['tipoActa'] = $tipoActa;
 		$busqueda['tipoRespuesta']=1;
 		$busqueda['numeroPregunta']=$num;
 
-		$cantidad[0] = $pregunta->cantPreguntas($busqueda)[0]['cantidad'];
+		$cantidad[0] = $pregunta->cantPreguntasDocente($busqueda)[0]['cantidad'];
 
-		$busqueda['idGrupo']=$idGrupo;
+		$busqueda['idDocente']=$idDocente;
 		$busqueda['tipoActa'] = $tipoActa;
 		$busqueda['tipoRespuesta']=0;
 		$busqueda['numeroPregunta']=$num;
-		$cantidad[1] = $pregunta->cantPreguntas($busqueda)[0]['cantidad'];
+		$cantidad[1] = $pregunta->cantPreguntasDocente($busqueda)[0]['cantidad'];
 
 		return $cantidad;
 	}
 
-	public function getObservacionesSocializacion($pregunta,$idGrupo)
+	public function getObservacionesSocializacion($pregunta,$idDocente)
 	{
-		$busqueda['idGrupo']=$idGrupo;
+		$busqueda['idDocente']=$idDocente;
 		$busqueda['numeroPregunta']=11;
 
-		return $pregunta->obtenerRespuesta($busqueda);
+		return $pregunta->obtenerRespuestaDocente($busqueda);
 	}
 
 
-	public function getObservacionesConcertacion($pregunta,$idGrupo)
+	public function getObservacionesConcertacion($pregunta,$idDocente)
 	{
-		$busqueda['idGrupo']=$idGrupo;
+		$busqueda['idDocente']=$idDocente;
 		$busqueda['numeroPregunta']=12;
 
-		return $pregunta->obtenerRespuesta($busqueda);
+		return $pregunta->obtenerRespuestaDocente($busqueda);
 	}
 
 	public function descargar($nombre)
@@ -125,5 +122,5 @@ class ReporteGrupo
 	{
 		return $this->pdf;
 	}
-}
+}	
 ?>

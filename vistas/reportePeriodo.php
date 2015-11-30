@@ -1,4 +1,4 @@
-<?php include_once("../controladores/reporteEspacioC.php");?>
+<?php include_once("../controladores/reportePeriodoC.php");?>
 <!doctype>
 <!-- Vista para el reporte de espacios academicos-->
 <html>
@@ -36,11 +36,14 @@
 					<h3>1. Seleccione el per&iacute;odo </h3>
 					<select id=myChoice name="myChoice" required>
 						<option value="" SELECTED>-Selecciona-</option>
+						 <?php for($i=0;$i<count($periodos);$i++){ ?>
+                                <option value="<?php echo $periodos[$i]['id']; ?>"><?php echo $periodos[$i]['periodo']?></option>
+                            <?php  } ?>
 					</select>
 				</div>
 				<section  class="contenedorCentrado">
                 	<!--boton que redirecciona al formulario acta de socializacion-->
-                   	<button class="boton" type="submit">Continuar</button>
+                   	<button class="boton" name="reportePeriodo" type="submit">Continuar</button>
                 </section>
 			</form>
 

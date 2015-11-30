@@ -25,19 +25,21 @@ Class Docente extends Modelo
 		$idPrograma = 0;
 		$correoElectronico = "";
 	}
-	/*Metodo con la consulta sql para agregar un docente*/
-	public function agregarDocente($data) {
-        
-        $sql = "INSERT into docente(
-          cedulaDocente,
-          nombreDocente,
-          correoElectronico,
-          Programa_idPrograma)
-          VALUES (
-          ".$data['cedulaDocente'].",
-          ".$data['nombreDocente'].",
-          '".$data['correoElectronico']."',
-          ".$data['Programa_idPrograma'].")";
+	
+	public function listaDocentes()
+	{
+		$sql="SELECT idDocente,nombreDocente FROM docente";
         $consulta = $this->query($sql);
-       }
+     	$datos = array();
+        $i=0;
+        while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
+        {
+        	$datos[$i] = array();
+        	$datos[$i]['id'] = $dato['idDocente'];
+        	$datos[$i]['nombre'] = $dato['nombreDocente'];        	
+        	$i++;
+        }
+
+        return $datos;
+	}
 }

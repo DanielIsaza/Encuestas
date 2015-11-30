@@ -54,7 +54,6 @@
 			}else
 			{
 		?>
-		
 		<!--<a href="/Encuestas/vistas/admin">Cerrar Sesi&oacute;n</a>-->
 		<!-- división con el contenido de la pag-->
     	<div class="row">

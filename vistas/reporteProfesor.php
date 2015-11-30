@@ -1,4 +1,4 @@
-<?php include_once("../controladores/reporteEspacioC.php");?>
+<?php include_once("../controladores/reporteProfesorC.php");?>
 <!doctype>
 <!-- Vista para el reporte de espacios academicos-->
 <html>
@@ -36,6 +36,9 @@
 					<h3>1. Seleccione el nombre del profesor </h3>
 					<select id=myChoice name="myChoice" required>
 						<option value="" SELECTED>-Selecciona-</option>
+                        <?php for($i=0;$i<count($docentes);$i++){ ?>
+                          <option value="<?php echo $docentes[$i]['id']; ?>"><?php echo $docentes[$i]['nombre']?></option>
+                        <?php  } ?>
 					</select>
 				</div>
 				<section  class="contenedorCentrado">

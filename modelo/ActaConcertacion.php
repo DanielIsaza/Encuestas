@@ -65,11 +65,10 @@ Class ActaConcertacion extends Modelo
      	return $datos;
     }
 
-    public function buscarGrupo($idGrupo)
+    public function buscarGrupo($idGrupo,$periodo)
     {
       $sql="SELECT idActaConcertacion 
-            FROM actaconcertacion WHERE Grupo_idGrupo=".$idGrupo;
-
+            FROM actaconcertacion WHERE Grupo_idGrupo=".$idGrupo." and periodoAcademico_idPeriodo=".$periodo;
       $consulta = $this->query($sql);
       $datos = array();
       $i=0;
@@ -79,5 +78,21 @@ Class ActaConcertacion extends Modelo
           $i++;
         }
       return $datos; 
+    }
+
+    public function buscarDocente($idDocente)
+    {
+      $sql="SELECT idActaConcertacion FROM actaconcertacion join grupo on 
+              idGrupo=Grupo_idGrupo where Docente_idDocente=".$idDocente;
+
+        $consulta = $this->query($sql);
+        $datos = array();
+        $i=0;
+          while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
+          {
+            $datos[$i] = $dato['idActaConcertacion'];
+            $i++;
+          }
+        return $datos;  
     }
 }

@@ -31,10 +31,15 @@
 		<div class="contenedor">
 			<!--Script para listas dependientes, semestres-> materias->grupos-->
     		<SCRIPT LANGUAJE="JavaScript">
-          
-          /*arreglos para materias y sus respectivos items*/
-          var arrMaterias = new Array(<?php for($i=0;$i<count($datos2);$i++){ if($i<(count($datos2)-1)){ echo json_encode($datos2[$i]).','; }else{ echo json_encode($datos2[$i]);}}?> ) 
-   
+                /*arreglos para planes de estudio y sus respectivos items*/
+                var arrPlanes = new Array(<?php for($i=0;$i<count($planes);$i++){ if($i<(count($planes)-1)){ echo json_encode($planes[$i]).','; }else{ echo json_encode($planes[$i]);}}?> )             
+          /*arreglos para semestres y sus respectivos items*/
+                var arrSemestres = new Array(<?php for($i=0;$i<count($datos);$i++){ if($i<(count($datos)-1)){ echo json_encode($datos[$i]).','; }else{ echo json_encode($datos[$i]);}}?> ) 
+
+                /*arreglos para materias y sus respectivos items*/
+                var arrMaterias = new Array(<?php for($i=0;$i<count($datos2);$i++){ if($i<(count($datos2)-1)){ echo json_encode($datos2[$i]).','; }else{ echo json_encode($datos2[$i]);}}?> ) 
+
+         
           //metodo que  llena las opciones de las listas despeglables segun la seleccion del usuario
           function selectChange(control, controlToPopulate, ItemArray, GroupArray)
           {
@@ -44,7 +49,8 @@
             var x;
                     //primero se vacia el segundo cuadro despegalbe de cualquier opcion almacenada
             for (var q=controlToPopulate.options.length;q>=0;q--) controlToPopulate.options[q]=null;
-              if (control.name == "firstChoice") 
+
+            if (control.name == "planCurricular") 
             {
                         //Se vacia el tercer cuadro despegable de cualquier opcion almacenada
           }
@@ -54,8 +60,8 @@
                     */
           myEle = document.createElement("option") ;
             myEle.value = "" ;
-            myEle.text = "-Selecciona-" ;
-            controlToPopulate.add(myEle) ;
+            myEle.text = "-Selecciona-";
+            controlToPopulate.add(myEle);
             for ( x = 0 ; x < ItemArray.length  ; x++ )
             {
               if ( GroupArray[x].depende == control.value )
@@ -73,17 +79,24 @@
     		<form name= myChoices method="post" action="">
                 <h2>Seleccione el espacio acad&eacute;mico para el reporte</h2>
                 <!--se organizan los elementos del formulario en divs que contienen las listas despegables-->
+                <h2>Seleccione el grupo para el reporte</h2>
+                    <!--se organizan los elementos del formulario en divs que contienen las listas despegables-->
+                     <div>
+                        <h3>1. Seleccione el plan curricular al que pertenece</h3>
+                        <select id=planCurricular name="planCurricular" onchange="selectChange(this, myChoices.firstChoice, arrSemestres, arrSemestres);" required>
+                        <option value="" SELECTED>-Selecciona-</option>
+                        <?php for($i=0;$i<count($planes);$i++){ ?>
+                          <option value="<?php echo $planes[$i]['pk']; ?>"><?php echo $planes[$i]['nombre']?></option>
+                        <?php  } ?>
+                      </select>
+                    </div>
                         <div>
                             <h3>1. Seleccione el semestre del espacio acad&eacute;mico</h3>
                             <!--primer cuadro despegable para la seleccion de semestre-->
-    						<select id=firstChoice name="firstChoice" onchange="selectChange(this, myChoices.secondChoice, arrMaterias, arrMaterias);" required>
-                                <option value="" SELECTED>-Selecciona-</option>
-                                <?php for($i=0;$i<count($datos);$i++){ ?>
-                                    <option value="<?php echo $datos[$i]['id']; ?>"><?php echo $datos[$i]['nombre']?></option>
-                                <?php  } ?>
+    						    <select id=firstChoice name="firstChoice" onchange="selectChange(this, myChoices.secondChoice, arrMaterias, arrMaterias);" required>
                             </select>
                         </div>
-    					<div>
+    					        <div>
                             <h3>2. Seleccione el espacio acad&eacute;mico</h3>
                             <!--segundo cuadro despegable para la seleccion del espacio academico-->
 						    <select id=secondChoice name="secondChoice" required>

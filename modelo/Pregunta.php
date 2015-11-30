@@ -58,6 +58,27 @@ Class Pregunta extends Modelo
         }
         return $datos;
        }
+
+       public function buscarInfoPreguntaDocente($idDocente)
+       {
+         $sql= "SELECT docente.nombreDocente
+          FROM grupo JOIN espacioacademico ON espacioacademico.idEspacioAcademico=grupo.EspacioAcademico_idEspacioacademico
+           JOIN docente ON docente.idDocente = grupo.Docente_idDocente WHERE docente.idDocente=".$idDocente;
+         $consulta = $this->query($sql);
+
+        $datos = array();
+        $i=0;
+        while($dato = $consulta->fetch(PDO::FETCH_BOTH))
+        {
+          $datos[$i]['espacioAcademico'] = "";
+          $datos[$i]['numeroGrupo'] = "";
+          $datos[$i]['docente'] = $dato['nombreDocente'];
+          $datos[$i]['idGrupo'] = "";
+
+          $i++;
+        }
+        return $datos;
+       }
        /*
        *Metodo que permite contar la cantidad de respuestas de un tipo para determinada pregunta
        */
@@ -69,16 +90,37 @@ Class Pregunta extends Modelo
               and numeroPregunta=".$datos['numeroPregunta']."  
               and respuesta=".$datos['tipoRespuesta'];
        
-       	$consulta = $this->query($sql);
-        
-       	$datos = array();
-        $i=0;
-        while($dato = $consulta->fetch(PDO::FETCH_BOTH))
-        {
-        	$datos[$i]['cantidad'] = $dato['count(respuesta)'];
-        	$i++;
-        }
-        return $datos;  
+         	$consulta = $this->query($sql);
+          
+         	$datos = array();
+          $i=0;
+          while($dato = $consulta->fetch(PDO::FETCH_BOTH))
+          {
+          	$datos[$i]['cantidad'] = $dato['count(respuesta)'];
+          	$i++;
+          }
+          return $datos;  
+       }
+       /*
+       *Metodo que permite contar la cantidad de respuestas de un tipo para determinada pregunta
+       */
+       public function cantPreguntasDocente($datos)
+       {
+         $sql="SELECT count(respuesta) from grupo join actaconcertacion on grupo.idGrupo = actaconcertacion.Grupo_idGrupo 
+         join pregunta on actaconcertacion.idActaConcertacion = pregunta.ActaConcertacion_idActaConcertacion 
+         where grupo.Docente_idDocente=".$datos['idDocente']." and numeroActaConcertacion =  ".$datos['tipoActa']."
+          and numeroPregunta=".$datos['numeroPregunta']." and respuesta=".$datos['tipoRespuesta'];
+       
+          $consulta = $this->query($sql);
+          
+          $datos = array();
+          $i=0;
+          while($dato = $consulta->fetch(PDO::FETCH_BOTH))
+          {
+            $datos[$i]['cantidad'] = $dato['count(respuesta)'];
+            $i++;
+          }
+          return $datos;  
        }
        /**
        *Metodo que permite obtener el valor de las respuestas ingresadas
@@ -87,7 +129,27 @@ Class Pregunta extends Modelo
        {
           $sql="SELECT respuesta from grupo join actaconcertacion on grupo.idGrupo = actaconcertacion.Grupo_idGrupo 
               join pregunta on actaconcertacion.idActaConcertacion = pregunta.ActaConcertacion_idActaConcertacion 
-              where idgrupo=".$datos['idGrupo']." and numeroPregunta=".$datos['numeroPregunta'];
+                where grupo.idGrupo=".$datos['idGrupo']." and numeroPregunta=".$datos['numeroPregunta'];
+
+              $consulta = $this->query($sql);
+          
+          $datos = array();
+          $i=0;
+          while($dato = $consulta->fetch(PDO::FETCH_BOTH))
+          {
+            $datos[$i]['respuesta'] = $dato['respuesta'];
+            $i++;
+          }
+          return $datos;
+        }
+        /**
+       *Metodo que permite obtener el valor de las respuestas ingresadas
+       */
+       public function obtenerRespuestaDocente($datos)
+       {
+          $sql="SELECT respuesta from grupo join actaconcertacion on grupo.idGrupo = actaconcertacion.Grupo_idGrupo 
+              join pregunta on actaconcertacion.idActaConcertacion = pregunta.ActaConcertacion_idActaConcertacion 
+              where grupo.Docente_idDocente=".$datos['idDocente']." and numeroPregunta=".$datos['numeroPregunta'];
 
               $consulta = $this->query($sql);
           

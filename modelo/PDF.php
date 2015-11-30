@@ -11,7 +11,8 @@ class PDF extends FPDF
     {
 
         // Logo
-        $this->Image('../img/uniquindiologo.jpg',94,6,23);
+        $this->Image('../img/logo.jpg',40,6,23);
+        $this->Image('../img/uniquindiologo.jpg',145,6,23);
         //$this->Image('../img/uniquindiologo.jpg',155,27,25,22);
         // Arial bold 15
         $this->SetFont('Arial','B',17);
@@ -101,7 +102,9 @@ class PDF extends FPDF
         //Se define la aliniacion horizontal que tendran en la hoja
         $pdf->SetX(30);
         //Se agrega el numero del grupo
+        if($datos[0]['numeroGrupo']!=""){
         $pdf->Cell(0,10,'Grupo: '.$datos[0]['numeroGrupo'],0,10);
+        }
         //Se agregan el nombre del docente y del grupo en celdas separadas
         $pdf->Cell(0,10,'Docente: '.$datos[0]['docente'],0,10);
     }
@@ -131,7 +134,7 @@ class PDF extends FPDF
         //Se descarga el pdf con un nombre
         $pdf->Output($nombre.'.pdf','D');
         //Codigo que visualiza el pdf en el navegador ---> 
-        //$pdf->Output();
+       // $pdf->Output();
     }
 }
 ?>
