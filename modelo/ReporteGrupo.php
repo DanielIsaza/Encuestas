@@ -57,6 +57,7 @@ class ReporteGrupo
 			{
 				$this->pdf->setObservaciones($observaciones[$i],$this->pdf);
 			}
+			
 			$this->pdf->AddPage();
 			$this->pdf->setSubtitulo('Acta Concertacion',$this->pdf);
 			

@@ -28,7 +28,8 @@ $actual = $periodo->actual()[0]['id'];
 if(isset($_POST['thirdChoice']))
 {	
 	$reporte = new ReporteGrupo();
-	$pdf = $reporte->	($_POST['thirdChoice'],$actual);
+	$pdf = $reporte->generarReporte($_POST['thirdChoice'],$actual);
+	echo $_POST['thirdChoice'].','.$actual;
 	if(!is_null($pdf))
 	{
 		$reporte->descargar('Reporte_Por_Grupo');

@@ -57,9 +57,7 @@
 		<!--<a href="/Encuestas/vistas/admin">Cerrar Sesi&oacute;n</a>-->
 		<!-- división con el contenido de la pag-->
     	<div class="row">
-    		<form action="#" method="post">
-    			
-    			<h2><br><B>Aqu&iacute; puede activar una de las actas</B></h2>
+    		<h2><br><B>Aqu&iacute; puede activar una de las actas</B></h2>
     			<form name= myChoices method="post">
 	    			<select name="activar" required>
 	    				<option value="">-Selecciona-</option>
@@ -69,6 +67,7 @@
 	    			</select>
 	    			<button class="boton" type="submit" name="activarBoton">Cambiar</button>
     			</form>
+    		<form action="#" method="post">
     			<h2><B>Aqu&iacute; puede generar los reportes</B></h2>
     			<div>
     				<h3>Generar reporte completo (Todos los espacios academicos)</h3>
