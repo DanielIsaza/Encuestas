@@ -12,7 +12,7 @@ $opciones = $mostrar->listar();
 $grupoid = $_POST['thirdChoice'];
 //El valor se guarda en una cookie
 setcookie("idGrupo",$grupoid,time()+360);
-echo $grupoid;
+
 if(isset($_POST['nombre']))	
 {  
 	if($opciones[0]['mostrar']==1)
