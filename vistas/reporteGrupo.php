@@ -30,8 +30,7 @@
 		</header>
 		<div class="contenedor">
         <!--Script para listas dependientes, semestres-> materias->grupos-->
-       <!--Script para listas dependientes, semestres-> materias->grupos-->
-        <SCRIPT LANGUAJE="JavaScript">
+       <SCRIPT LANGUAJE="JavaScript">
                 /*arreglos para planes de estudio y sus respectivos items*/
                 var arrPlanes = new Array(<?php for($i=0;$i<count($planes);$i++){ if($i<(count($planes)-1)){ echo json_encode($planes[$i]).','; }else{ echo json_encode($planes[$i]);}}?> )             
           /*arreglos para semestres y sus respectivos items*/
@@ -79,6 +78,7 @@
 
           }
         </SCRIPT><!--fin del script-->
+
         <!--Formulario con la estructura de los cuadros despegables-->
         <form name= myChoices method="post">
           <h2>Seleccione el grupo para el reporte</h2>

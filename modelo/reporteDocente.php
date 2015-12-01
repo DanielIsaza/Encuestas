@@ -35,41 +35,46 @@ class reporteDocente
 			$preguntas = $enunciado->listarEnunciados();
 
 			$this->pdf->titulo($datos,$this->pdf);
-
-			$this->pdf->AddPage();
-			
-			$this->pdf->setSubtitulo('Acta Socializacion',$this->pdf);
-
-			for($i=0;$i<(count($preguntas)-6);$i++)
+			if((($this->respuestas($pregunta,$preguntas[0]['numeroPregunta'],1,$idDocente)[0]) > 0) or
+				(($this->respuestas($pregunta,$preguntas[0]['numeroPregunta'],1,$idDocente)[1]) > 0) ) 
 			{
-				$resp = $this->respuestas($pregunta,$preguntas[$i]['numeroPregunta'],1,$idDocente);
-				$this->pdf->crear($preguntas[$i],$resp[0],$resp[1],$this->pdf);
-			}
+				$this->pdf->AddPage();
+				
+				$this->pdf->setSubtitulo('Acta Socializacion',$this->pdf);
 
-			$observaciones = $this->getObservacionesSocializacion($pregunta,$idDocente);
-			$this->pdf->setSubtitulo('Observaciones',$this->pdf);
-			for($i=0;$i<count($observaciones);$i++)
+				for($i=0;$i<(count($preguntas)-6);$i++)
+				{
+					$resp = $this->respuestas($pregunta,$preguntas[$i]['numeroPregunta'],1,$idDocente);
+					$this->pdf->crear($preguntas[$i],$resp[0],$resp[1],$this->pdf);
+				}
+
+				$observaciones = $this->getObservacionesSocializacion($pregunta,$idDocente);
+				$this->pdf->setSubtitulo('Observaciones',$this->pdf);
+				for($i=0;$i<count($observaciones);$i++)
+				{
+					$this->pdf->setObservaciones($observaciones[$i],$this->pdf);
+				}
+			}
+			if((($this->respuestas($pregunta,$preguntas[6]['numeroPregunta'],2,$idDocente)[0]) > 0) or
+				(($this->respuestas($pregunta,$preguntas[6]['numeroPregunta'],2,$idDocente)[1]) > 0) ) 
 			{
-				$this->pdf->setObservaciones($observaciones[$i],$this->pdf);
-			}
+				$this->pdf->AddPage();
+				
+				$this->pdf->setSubtitulo('Acta Concertacion',$this->pdf);
+				
+				for($i=6;$i<(count($preguntas)-2);$i++)
+				{
+					$resp = $this->respuestas($pregunta,$preguntas[$i]['numeroPregunta'],2,$idDocente);
+					$this->pdf->crear($preguntas[$i],$resp[0],$resp[1],$this->pdf);
+				}
 
-			$this->pdf->AddPage();
-			
-			$this->pdf->setSubtitulo('Acta Concertacion',$this->pdf);
-			
-			for($i=6;$i<(count($preguntas)-2);$i++)
-			{
-				$resp = $this->respuestas($pregunta,$preguntas[$i]['numeroPregunta'],2,$idDocente);
-				$this->pdf->crear($preguntas[$i],$resp[0],$resp[1],$this->pdf);
+				$observaciones = $this->getObservacionesConcertacion($pregunta,$idDocente);
+				$this->pdf->setSubtitulo('Observaciones',$this->pdf);
+				for($i=0;$i<count($observaciones);$i++)
+				{
+					$this->pdf->setObservaciones($observaciones[$i],$this->pdf);
+				}
 			}
-
-			$observaciones = $this->getObservacionesConcertacion($pregunta,$idDocente);
-			$this->pdf->setSubtitulo('Observaciones',$this->pdf);
-			for($i=0;$i<count($observaciones);$i++)
-			{
-				$this->pdf->setObservaciones($observaciones[$i],$this->pdf);
-			}
-
 			return $this->pdf;
 		}
 	}

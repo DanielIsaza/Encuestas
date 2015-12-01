@@ -9,10 +9,10 @@ $mostrar = new ActaMostrar();
 $opciones = $mostrar->listar();
 
 //Se obtiene el valor del grupo seleccionado 
-$grupoid = $_POST['secondChoice'];
+$grupoid = $_POST['thirdChoice'];
 //El valor se guarda en una cookie
 setcookie("idGrupo",$grupoid,time()+360);
-
+echo $grupoid;
 if(isset($_POST['nombre']))	
 {  
 	if($opciones[0]['mostrar']==1)
@@ -109,7 +109,7 @@ function ingresarPreguntas($act1)
 	$data[3]['numero']= 4;
 	$data[4]['numero']= 5;
 	$data[5]['numero']= 6;
-	$data[6]['numero']= 12;
+	$data[6]['numero']= 11;
 	//Respuesta dada por el estudiante
 	$data[0]['respuesta']= $_POST['p1'];
 	$data[1]['respuesta']= $_POST['p2'];
@@ -143,10 +143,10 @@ function ingresarPreguntas2($act2)
 	$data[3]['numero']= 10;
 	$data[4]['numero']= 12;
 	//Respuesta dada por el estudiante
-	$data[0]['respuesta']= $_POST['pregunta7'];
-	$data[1]['respuesta']= $_POST['pregunta8'];
-	$data[2]['respuesta']= $_POST['pregunta9'];
-	$data[3]['respuesta']= $_POST['pregunta10'];
+	$data[0]['respuesta']= $_POST['p7'];
+	$data[1]['respuesta']= $_POST['p8'];
+	$data[2]['respuesta']= $_POST['p9'];
+	$data[3]['respuesta']= $_POST['p10'];
 	$data[4]['respuesta']= $_POST['observaciones'];
 	//id del acta a la que pertenecen las respuestas
 	$data[0]['idActa']= $act2;

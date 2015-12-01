@@ -29,7 +29,7 @@ if(isset($_POST['thirdChoice']))
 {	
 	$reporte = new ReporteGrupo();
 	$pdf = $reporte->generarReporte($_POST['thirdChoice'],$actual);
-	echo $_POST['thirdChoice'].','.$actual;
+	
 	if(!is_null($pdf))
 	{
 		$reporte->descargar('Reporte_Por_Grupo');
