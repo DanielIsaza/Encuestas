@@ -14,5 +14,4 @@ if(isset($_POST['myChoice']))
 		$reporte->descargar('Reporte_Docente');
 	}
 }
-
 ?>

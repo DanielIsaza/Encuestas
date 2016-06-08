@@ -43,10 +43,10 @@
 					<input type="text" placeholder="Ingrese su username" name="username" id="username" required/>
 				</div>	
 				<div class="form-group">
-					<label for="pass"><h3>Contraseña:</h3></label>
-					<input type="password" placeholder="Ingrese su contraseña" name="pass" id="pass" required/>
+					<label for="pass"><h3>Contrase&ntilde;a:</h3></label>
+					<input type="password" placeholder="Ingrese su contrase&ntilde;a" name="pass" id="pass" required/>
 				</div>	
-				<button type="submit" id="login" name="login">Iniciar Sesión</button>
+				<button type="submit" id="login" name="login">Iniciar Sesi&oacute;n</button>
 			</form>
 
     	</div>
@@ -64,6 +64,7 @@
 	    				<option value="0">Ninguna (desactivar)</option>
 	    				<option value="1">Acta socializaci&oacute;n</option>
 	    				<option value="2">Acta de concertaci&oacute;n</option>
+	    				<option value="3">Evaluaci&oacute;n de desempe&ntilde;o</option>
 	    			</select>
 	    			<button class="boton" type="submit" name="activarBoton">Cambiar</button>
     			</form>
@@ -88,6 +89,10 @@
     			<div>
     				<h3>Generar reporte por periodo acad&eacute;mico</h3>
     				<button class="botonP" name="reporteProfesor" type="reportePeriodo" formaction="reportePeriodo.php" >Generar</button>
+    			</div>
+    			<div>
+    				<h3>Generar reporte evaluaci&oacute;n de desempe&ntilde;o</h3>
+    				<button class="botonP" name="reporteEvaluacion" type="reporteEvaluacion" formaction="reporteEvaluacion.php" >Generar</button>
     			</div>
     			<button type="submit" id="logout" name="logout">Cerrar Sesi&oacute;n</button>
     		</form>

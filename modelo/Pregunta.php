@@ -61,7 +61,7 @@ Class Pregunta extends Modelo
 
        public function buscarInfoPreguntaDocente($idDocente)
        {
-         $sql= "SELECT docente.nombreDocente
+          $sql= "SELECT espacioacademico.nombre,grupo.NumeroGrupo,docente.nombreDocente,grupo.idGrupo 
           FROM grupo JOIN espacioacademico ON espacioacademico.idEspacioAcademico=grupo.EspacioAcademico_idEspacioacademico
            JOIN docente ON docente.idDocente = grupo.Docente_idDocente WHERE docente.idDocente=".$idDocente;
          $consulta = $this->query($sql);
@@ -70,11 +70,10 @@ Class Pregunta extends Modelo
         $i=0;
         while($dato = $consulta->fetch(PDO::FETCH_BOTH))
         {
-          $datos[$i]['espacioAcademico'] = "";
-          $datos[$i]['numeroGrupo'] = "";
+          $datos[$i]['espacioAcademico'] = $dato['nombre'];
+          $datos[$i]['numeroGrupo'] = $dato['NumeroGrupo'];
           $datos[$i]['docente'] = $dato['nombreDocente'];
-          $datos[$i]['idGrupo'] = "";
-
+          $datos[$i]['idGrupo'] = $dato['idGrupo'];
           $i++;
         }
         return $datos;
@@ -150,6 +149,24 @@ Class Pregunta extends Modelo
           $sql="SELECT respuesta from grupo join actaconcertacion on grupo.idGrupo = actaconcertacion.Grupo_idGrupo 
               join pregunta on actaconcertacion.idActaConcertacion = pregunta.ActaConcertacion_idActaConcertacion 
               where grupo.Docente_idDocente=".$datos['idDocente']." and numeroPregunta=".$datos['numeroPregunta'];
+
+              $consulta = $this->query($sql);
+          
+          $datos = array();
+          $i=0;
+          while($dato = $consulta->fetch(PDO::FETCH_BOTH))
+          {
+            $datos[$i]['respuesta'] = $dato['respuesta'];
+            $i++;
+          }
+          return $datos;
+        }
+
+        public function obtenerRespuestaEvaluacion($datos)
+       {
+          $sql="SELECT respuesta from grupo join actaconcertacion on grupo.idGrupo = actaconcertacion.Grupo_idGrupo 
+              join pregunta on actaconcertacion.idActaConcertacion = pregunta.ActaConcertacion_idActaConcertacion 
+              where grupo.Docente_idDocente=".$datos['idDocente']." and numeroPregunta=".$datos['numeroPregunta']." and idActaConcertacion = ".$datos['idActaConcertacion'];
 
               $consulta = $this->query($sql);
           

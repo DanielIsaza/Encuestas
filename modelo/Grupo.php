@@ -29,7 +29,7 @@ Class Grupo extends Modelo
 	**/
 	function listarGrupos()
 	{
-		$sql="SELECT idGrupo,NumeroGrupo,EspacioAcademico_idEspacioAcademico FROM grupo";
+		$sql="SELECT idGrupo, NumeroGrupo, EspacioAcademico_idEspacioAcademico FROM grupo ORDER BY numeroGrupo ASC ";
         $consulta = $this->query($sql);
      	$datos = array();
         $i=0;
@@ -64,5 +64,25 @@ Class Grupo extends Modelo
         }
 
         return $datos;
+	}
+	/**
+	* Metodo que permite obtener el nombre del docente asignado al grupo
+	**/
+	function obtenerDocente($idGrupo)
+	{
+		$sql="SELECT nombreDocente FROM grupo JOIN docente ON idDocente = Docente_idDocente
+				WHERE idGrupo = ".$idGrupo;
+
+		$consulta = $this->query($sql);
+     	$datos = array();
+        $i=0;
+        while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
+        {
+        	$datos[$i] = array();
+        	$datos[$i]['nombreDocente'] = $dato['nombreDocente'];
+        	
+        	$i++;
+        }
+        return $datos[0];
 	}
 }

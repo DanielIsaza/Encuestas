@@ -37,20 +37,23 @@ class ReporteGrupo
 		 	$datos = $pregunta->buscarInfoPregunta($idGrupo);
 			
 			$enunciado = new Enunciado();
-			$preguntas = $enunciado->listarEnunciados();
+			$preguntas = $enunciado->listarEnunciados(1);
 
 			$this->pdf->titulo($datos,$this->pdf);
-			if((($this->respuestas($pregunta,$preguntas[0]['numeroPregunta'],1,$idGrupo)[0]) > 0) or
-				(($this->respuestas($pregunta,$preguntas[0]['numeroPregunta'],1,$idGrupo)[1]) > 0) ) 
+			if((($this->respuestas($pregunta,$preguntas[1]['numeroPregunta'],1,$idGrupo)[0]) > 0) or
+				(($this->respuestas($pregunta,$preguntas[1]['numeroPregunta'],1,$idGrupo)[1]) > 0) ) 
 			{
 				$this->pdf->AddPage();
 				
 				$this->pdf->setSubtitulo('Acta Socializacion',$this->pdf);
 
-				for($i=0;$i<(count($preguntas)-6);$i++)
+				for($i=1;$i<=(count($preguntas));$i++)
 				{
-					$resp = $this->respuestas($pregunta,$preguntas[$i]['numeroPregunta'],1,$idGrupo);
-					$this->pdf->crear($preguntas[$i],$resp[0],$resp[1],$this->pdf);
+					if($preguntas[$i]['numeroPregunta'] != 11)
+					{
+						$resp = $this->respuestas($pregunta,$preguntas[$i]['numeroPregunta'],1,$idGrupo);
+						$this->pdf->crear($preguntas[$i],$resp[0],$resp[1],$this->pdf);
+					}
 				}
 
 				$observaciones = $this->getObservacionesSocializacion($pregunta,$idGrupo);
@@ -60,16 +63,22 @@ class ReporteGrupo
 					$this->pdf->setObservaciones($observaciones[$i],$this->pdf);
 				}
 			}
-			if((($this->respuestas($pregunta,$preguntas[6]['numeroPregunta'],2,$idGrupo)[0]) > 0) or
-				(($this->respuestas($pregunta,$preguntas[6]['numeroPregunta'],2,$idGrupo)[1]) > 0) ) 
-			{
+
+			$preguntas = $enunciado->listarEnunciados(2);
+			
+			if((($this->respuestas($pregunta,$preguntas[1]['numeroPregunta'],2,$idGrupo)[0]) > 0) or
+				(($this->respuestas($pregunta,$preguntas[1]['numeroPregunta'],2,$idGrupo)[1]) > 0) ) 
+			{				
 				$this->pdf->AddPage();
 				$this->pdf->setSubtitulo('Acta Concertacion',$this->pdf);
 				
-				for($i=6;$i<(count($preguntas)-2);$i++)
+				for($i=1;$i<(count($preguntas));$i++)
 				{
-					$resp = $this->respuestas($pregunta,$preguntas[$i]['numeroPregunta'],2,$idGrupo);
-					$this->pdf->crear($preguntas[$i],$resp[0],$resp[1],$this->pdf);
+					if($preguntas[$i]['numeroPregunta'] != 12)
+					{
+						$resp = $this->respuestas($pregunta,$preguntas[$i]['numeroPregunta'],2,$idGrupo);
+						$this->pdf->crear($preguntas[$i],$resp[0],$resp[1],$this->pdf);
+					}
 				}
 
 				$observaciones = $this->getObservacionesConcertacion($pregunta,$idGrupo);

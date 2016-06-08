@@ -36,7 +36,7 @@ Class Semestre extends Modelo
         {
         	$datos[$i] = array();
         	$datos[$i]['pk'] = $dato['idSemestre'];
-        	$datos[$i]['nombre'] = $dato['nombreSemestre'];
+        	$datos[$i]['nombre'] = utf8_encode($dato['nombreSemestre']);
         	$datos[$i]['depende'] = $dato['PlanEstudio_idPlanEstudio'];
         	$i++;
         }

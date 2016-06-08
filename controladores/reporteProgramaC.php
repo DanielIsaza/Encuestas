@@ -10,16 +10,16 @@ include_once("../modelo/ActaMostrar.php");
 if(isset($_POST['reporteGeneral']))
 {	
 	$periodo = new PeriodoAcademico();
-	$actual = $periodo->actual()[0]['id'];
-
 	$semestre = new Semestre();
 	$reporte = new ReporteGrupo();
 	$espacioAcademico = new EspacioAcademico();
+
+	$actual = $periodo->actual()[0]['id'];
+
 	$pdf = $reporte->getPDF();
 
 	$datos = array();
 	$datos = $semestre->listarSemestres();
-		
 	
 	$datos2 = $espacioAcademico->espaciosPorSemestre($datos[0]['pk']);
 	$pdf->setTitulo($datos[0]['nombre']);
@@ -91,6 +91,77 @@ if(isset($_POST['reporteGeneral']))
 		grupos($datos2[$i],$reporte,$actual);
 	}
 
+
+	$datos2 = $espacioAcademico->espaciosPorSemestre($datos[10]['pk']);
+	$pdf->setTitulo($datos[10]['nombre']);
+	for($i=0;$i<count($datos2);$i++)
+	{
+		grupos($datos2[$i],$reporte,$actual);
+	}
+	
+	$datos2 = $espacioAcademico->espaciosPorSemestre($datos[11]['pk']);
+	$pdf->setTitulo($datos[11]['nombre']);
+	for($i=0;$i<count($datos2);$i++)
+	{
+		grupos($datos2[$i],$reporte,$actual);
+	}
+
+	$datos2 = $espacioAcademico->espaciosPorSemestre($datos[12]['pk']);
+	$pdf->setTitulo($datos[12]['nombre']);
+	for($i=0;$i<count($datos2);$i++)
+	{
+		grupos($datos2[$i],$reporte,$actual);
+	}
+
+	$datos2 = $espacioAcademico->espaciosPorSemestre($datos[13]['pk']);
+	$pdf->setTitulo($datos[13]['nombre']);
+	for($i=0;$i<count($datos2);$i++)
+	{
+		grupos($datos2[$i],$reporte,$actual);
+	}
+
+	$datos2 = $espacioAcademico->espaciosPorSemestre($datos[14]['pk']);
+	$pdf->setTitulo($datos[14]['nombre']);
+	for($i=0;$i<count($datos2);$i++)
+	{
+		grupos($datos2[$i],$reporte,$actual);
+	}
+
+	$datos2 = $espacioAcademico->espaciosPorSemestre($datos[15]['pk']);
+	$pdf->setTitulo($datos[15]['nombre']);
+	for($i=0;$i<count($datos2);$i++)
+	{
+		grupos($datos2[$i],$reporte,$actual);
+	}
+
+	$datos2 = $espacioAcademico->espaciosPorSemestre($datos[16]['pk']);
+	$pdf->setTitulo($datos[16]['nombre']);
+	for($i=0;$i<count($datos2);$i++)
+	{
+		grupos($datos2[$i],$reporte,$actual);
+	}
+
+	$datos2 = $espacioAcademico->espaciosPorSemestre($datos[17]['pk']);
+	$pdf->setTitulo($datos[17]['nombre']);
+	for($i=0;$i<count($datos2);$i++)
+	{
+		grupos($datos2[$i],$reporte,$actual);
+	}
+
+	$datos2 = $espacioAcademico->espaciosPorSemestre($datos[18]['pk']);
+	$pdf->setTitulo($datos[18]['nombre']);
+	for($i=0;$i<count($datos2);$i++)
+	{
+		grupos($datos2[$i],$reporte,$actual);
+	}
+
+	$datos2 = $espacioAcademico->espaciosPorSemestre($datos[19]['pk']);
+	$pdf->setTitulo($datos[19]['nombre']);
+	for($i=0;$i<count($datos2);$i++)
+	{
+		grupos($datos2[$i],$reporte,$actual);
+	}
+
 	if(!is_null($pdf))
 	{
 		$reporte->descargar('Reporte_Por_Programa');
@@ -122,6 +193,11 @@ if(isset($_POST['activarBoton']))
 		} else {
 			if ($_POST['activar']==2) {
 				$actaMostrar->activarConcertacion();
+			}
+			else {
+				if($_POST['activar']==3){
+					$actaMostrar->activarEval();
+				}
 			}
 		}
 		

@@ -35,6 +35,9 @@ Class ActaMostrar extends Modelo
 
      	$sql ="UPDATE encuestas.actamostrar SET mostrar = 0 WHERE actamostrar.id= 2";
      	$consulta=$this->query($sql);
+
+     	$sql ="UPDATE encuestas.actamostrar SET mostrar = 0 WHERE actamostrar.id= 3";
+     	$consulta=$this->query($sql);
 	}
 	public function activarConcertacion()
 	{
@@ -44,6 +47,19 @@ Class ActaMostrar extends Modelo
      	$sql ="UPDATE encuestas.actamostrar SET mostrar = 1 WHERE actamostrar.id= 2";
      	$consulta=$this->query($sql);
 
+     	$sql ="UPDATE encuestas.actamostrar SET mostrar = 0 WHERE actamostrar.id= 3";
+     	$consulta=$this->query($sql);
+	}
+	public function activarEval()
+	{
+		$sql ="UPDATE encuestas.actamostrar SET mostrar = 0 WHERE actamostrar.id = 1";
+     	$consulta=$this->query($sql);
+
+     	$sql ="UPDATE encuestas.actamostrar SET mostrar = 0 WHERE actamostrar.id= 2";
+     	$consulta=$this->query($sql);
+
+     	$sql ="UPDATE encuestas.actamostrar SET mostrar = 1 WHERE actamostrar.id= 3";
+     	$consulta=$this->query($sql);
 	}
 	public function desactivar()
 	{
@@ -53,5 +69,7 @@ Class ActaMostrar extends Modelo
      	$sql ="UPDATE encuestas.actamostrar SET mostrar = 0 WHERE actamostrar.id= 2";
      	$consulta=$this->query($sql);
 
+     	$sql ="UPDATE encuestas.actamostrar SET mostrar = 0 WHERE actamostrar.id= 3";
+     	$consulta=$this->query($sql);
 	}
 }

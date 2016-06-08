@@ -30,18 +30,35 @@ Class ActaConcertacion extends Modelo
 	*/
 	public function agregarActaConcertacion($data) 
 	{
-        
-        $sql = "INSERT into actaconcertacion(
-          numeroActaConcertacion,
-          ano,
-          Grupo_idGrupo,
-          Estudiante_idEstudiante)
-          VALUES (
-          '".$data['numero']."',
-          '".$data['ano']."',
-          ".$data['idGrupo'].",
-          ".$data['idEstudiante'].")";
-        $consulta = $this->query($sql);
+      $sql = "INSERT into actaconcertacion(
+         numeroActaConcertacion,
+         ano,
+         Grupo_idGrupo,
+         Estudiante_idEstudiante)
+         VALUES (
+         '".$data['numero']."',
+         '".$data['ano']."',
+         ".$data['idGrupo'].",
+         ".$data['idEstudiante'].")";
+      $consulta = $this->query($sql);
+    }
+    /**
+    * metodo que permite buscar la ultima evaluacion ingresada.
+    */
+    public function buscarEvaluacion($data)
+    {
+      $sql = "SELECT MAX(idActaConcertacion)as idActaConcertacion FROM actaconcertacion WHERE numeroActaConcertacion =".$data['numero']." AND Grupo_idGrupo =".$data['idGrupo'];
+
+      $consulta = $this->query($sql);
+      $datos = array();
+      $i=0;
+        while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
+        {
+          $datos[$i] = $dato['idActaConcertacion'];
+          $i++;
+        }
+
+      return $datos;
     }
     /*
     *Metodo que retorna el id de un acta previamente agregado
@@ -53,7 +70,7 @@ Class ActaConcertacion extends Modelo
     			WHERE numeroActaConcertacion=".$data['numero']."
     			and Grupo_idGrupo =".$data['idGrupo']."  and
     			 Estudiante_idEstudiante =".$data['idEstudiante'];
-
+      
     	$consulta = $this->query($sql);
     	$datos = array();
     	$i=0;
@@ -91,6 +108,38 @@ Class ActaConcertacion extends Modelo
           while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
           {
             $datos[$i] = $dato['idActaConcertacion'];
+            $i++;
+          }
+        return $datos;  
+    }
+
+    public function evaluacionesDocente($idDocente)
+    {
+      $sql = "SELECT idActaConcertacion FROM actaconcertacion join grupo on grupo.idGrupo=Grupo_idGrupo 
+          where grupo.Docente_idDocente = ".$idDocente." and numeroActaConcertacion = 3";
+
+      $consulta = $this->query($sql);
+      $datos = array(); 
+
+      $i=0;
+          while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
+          {
+            $datos[$i] = $dato['idActaConcertacion'];
+            $i++;
+          }
+        return $datos;  
+    }
+
+    public function buscarFecha($idActa)
+    {
+      $sql="SELECT ano FROM actaconcertacion WHERE idActaConcertacion =".$idActa;
+      $consulta = $this->query($sql);
+      $datos = array(); 
+
+      $i=0;
+          while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
+          {
+            $datos[$i] = $dato['ano'];
             $i++;
           }
         return $datos;  

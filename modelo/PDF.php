@@ -9,7 +9,6 @@ class PDF extends FPDF
 
     function Header()
     {
-
         // Logo
         $this->Image('../img/logo.jpg',40,6,23);
         $this->Image('../img/uniquindiologo.jpg',145,6,23);
@@ -22,7 +21,7 @@ class PDF extends FPDF
         $this->SetXY(90,40);
         $this->Cell(30,10,$this->title,0,0,'C');
         // Line break
-        $this->Ln(20);
+        $this->Ln(20);  
     }
 
     // Page footer
@@ -73,6 +72,7 @@ class PDF extends FPDF
         $nombreImagen = '../img/temp/' .mt_rand(). '.png';
         // Display the graph
         $grafico->Stroke($nombreImagen);
+
         return $nombreImagen;
     }
 
@@ -95,7 +95,7 @@ class PDF extends FPDF
 
         $pdf->SetFont('Times','B',15);
         $pdf->SetX(40);
-        $pdf->Multicell(0,0,$datos[0]['espacioAcademico'],0,'C');
+        $pdf->Multicell(0,0,utf8_decode($datos[0]['espacioAcademico']),0,'C');
         $pdf->Ln(3);
         //se define un nuevo tipo y tamaño de letra para los subtitulos
         $pdf->SetFont('Times','B',14);
@@ -106,7 +106,7 @@ class PDF extends FPDF
         $pdf->Cell(0,10,'Grupo: '.$datos[0]['numeroGrupo'],0,10);
         }
         //Se agregan el nombre del docente y del grupo en celdas separadas
-        $pdf->Cell(0,10,'Docente: '.$datos[0]['docente'],0,10);
+        $pdf->Cell(0,10,'Docente: '.utf8_decode($datos[0]['docente']),0,10);
     }
 
     function crear($pregunta,$si,$no,$pdf)
@@ -117,7 +117,7 @@ class PDF extends FPDF
         //Se define un nuevo tipo y tamaño de letra para el contenido
         $pdf->setFont('Times','',13);
         //Se agrega en una multicelda (para mantener el contenido en el margen) el contenido del enunciado 
-        $pdf->Multicell(0,6,$pregunta['enunciado'],0,7);
+        $pdf->Multicell(0,6,utf8_decode($pregunta['enunciado']),0,7);
         //Se da un espacio 
         $pdf->Ln(6);
         //Se general el grafico respectivo con las respuestas de la pregunta
@@ -134,7 +134,6 @@ class PDF extends FPDF
         //Se descarga el pdf con un nombre
         $pdf->Output($nombre.'.pdf','D');
         //Codigo que visualiza el pdf en el navegador ---> 
-       // $pdf->Output();
     }
 }
 ?>

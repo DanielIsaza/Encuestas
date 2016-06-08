@@ -10,12 +10,12 @@
 		function __construct()
 		{
 		 $host = "localHost";
-		 $db_name = "Encuestas";
+		 $db_name = "encuestas";
 		 $username = "root";
-		 $password = ""; 
+		 $password = "r00t"; 
 			try{
 			
-				$this->conexion = new PDO("mysql:host={$host};dbname={$db_name}", $username, $password);
+				$this->conexion = new PDO("mysql:host={$host};dbname={$db_name}", $username, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES  \'UTF8\''));
 
 			}catch(PDOException $exception){
 

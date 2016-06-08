@@ -11,6 +11,7 @@
 		<!-- JavaScript-->
 		<script type="./main.js"></script>
 		<script src="../js/modernizr.js"></script>
+    <script src="../js/str.js"></script>
 		<!--CSS-->
 		<link rel="stylesheet" type="text/css" href="../css/main.css">
 		<!--foundation-->
@@ -71,7 +72,7 @@
                 {
                   myEle = document.createElement("option") ;
                   myEle.value = GroupArray[x].pk ;
-                  myEle.text = ItemArray[x].nombre ;
+                  myEle.text = utf8_decode(ItemArray[x].nombre);
                   controlToPopulate.add(myEle) ;
                 }
             }
