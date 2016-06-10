@@ -51,7 +51,9 @@ Class EspacioAcademico extends Modelo
         }
         return $datos;
 	}
-
+	/**
+	* metodo que lista los espacios academicos de un semestre
+	*/
 	function espaciosPorSemestre($idSemestre)
 	{	
 		$sql="SELECT idEspacioAcademico,nombre,Semestre_idSemestre FROM espacioacademico

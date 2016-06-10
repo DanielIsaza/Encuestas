@@ -29,7 +29,8 @@ Class Grupo extends Modelo
 	**/
 	function listarGrupos()
 	{
-		$sql="SELECT idGrupo, NumeroGrupo, EspacioAcademico_idEspacioAcademico FROM grupo ORDER BY numeroGrupo ASC ";
+		$sql="SELECT idGrupo, NumeroGrupo, EspacioAcademico_idEspacioAcademico FROM grupo LEFT JOIN actaconcertacion ON idGrupo = Grupo_idGrupo where (idActaconcertacion IS NULL  OR periodoAcademico_idPeriodo = (select MAX(id) from periodoacademico ) )
+					  ORDER BY numeroGrupo ASC ";
         $consulta = $this->query($sql);
      	$datos = array();
         $i=0;
