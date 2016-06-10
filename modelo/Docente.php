@@ -45,19 +45,20 @@ Class Docente extends Modelo
 
 	public function infoDocente($idDocente,$idActa)
 	{
-		$sql ="SELECT nombreDocente, nombre, nombreSemestre FROM docente JOIN grupo ON idDocente = Docente_idDocente
+		$sql ="SELECT nombreDocente, nombre, nombreSemestre,NumeroGrupo FROM docente JOIN grupo ON idDocente = Docente_idDocente
 				JOIN actaconcertacion ON idGrupo = Grupo_idGrupo JOIN espacioacademico ON idEspacioAcademico = EspacioAcademico_idEspacioAcademico JOIN semestre ON idSemestre = Semestre_idSemestre
 					WHERE idDocente =".$idDocente."  AND idActaConcertacion =".$idActa;
 
 		$consulta = $this->query($sql);
 		$datos = array();
-		 $i=0;
+		$i=0;
         while($dato = $consulta->fetch(PDO::FETCH_ASSOC))
         {
         	$datos[$i] = array();
         	$datos[$i]['nombreDocente'] = $dato['nombreDocente'];
         	$datos[$i]['nombre'] = $dato['nombre'];
         	$datos[$i]['nombreSemestre'] = $dato['nombreSemestre'];
+        	$datos[$i]['NumeroGrupo'] = $dato['NumeroGrupo'];
         	$i++;
         }
 

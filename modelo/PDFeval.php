@@ -14,6 +14,13 @@ class PDFEVAL extends FPDI
 		$this->setSourceFile("../doc/EVALUACION_DESEMPENO_DOCENTE.pdf");
 	}
 	/**
+	* metodo que permite agregar una nueva pagina al documento
+	*/
+	function agregarPagina()
+	{
+		$this->addPage();
+	}
+	/**
 	* metodo que importa la primera pagina del documento
 	*/
 	function importarPrimeraPag()
@@ -46,7 +53,7 @@ class PDFEVAL extends FPDI
 	function diligenciarDatos($data)
 	{
 		//Nombre docente
-		$nombre = $data['nombreDocente'];
+		$nombre = utf8_decode($data['nombreDocente']);
 		$this->SetFont('Arial','', 10);
 		$this->SetTextColor(0,0,0);
 		$this->SetXY(45, 50.5);
@@ -67,21 +74,27 @@ class PDFEVAL extends FPDI
 		$this->Write(0, $nombre);
 
 		//Asignar espacio academico
-		$nombre = $data['nombre'];
+		$nombre = utf8_decode($data['nombre']);
 		$this->SetFont('Arial','', 10);
 		$this->SetTextColor(0,0,0);
 		$this->SetXY(64, 75.5);
 		$this->Write(0, $nombre);
 
 		//Asignar semestre
-		$nombre = $data['nombreSemestre'];
+		$nombre = utf8_decode($data['nombreSemestre']);
 		$this->SetFont('Arial','', 10);
 		$this->SetTextColor(0,0,0);
 		$this->SetXY(142, 67);
 		$this->Write(0, $nombre);
 
+		//Asignar numero del grupo
+		$numero = "grupo: ".$data['NumeroGrupo'];
+		$this->SetFont('Arial','', 10);
+		$this->SetTextColor(0,0,0);
+		$this->SetXY(180, 75.5);
+		$this->Write(0, $numero);
+		
 		//manejo de fechas 
-
 		list($dia,$mes,$ano) = explode("-",$data['ano'][0]);
 		//Asignar Fecha
 		$nombre = $dia;
@@ -393,8 +406,7 @@ class PDFEVAL extends FPDI
 	{
 		$this->SetFont('Arial','', 12);
 		$this->SetTextColor(0,0,0);
-		$this->SetXY(10, 275);
-		$this->Write(0, $data);
+		$this->Multicell(0,8,utf8_decode($data),0,7);
 	}
 }
 ?>

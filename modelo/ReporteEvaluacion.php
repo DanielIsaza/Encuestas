@@ -7,7 +7,7 @@ include_once("../modelo/EspacioAcademico.php");
 include_once("../modelo/Grupo.php");
 include_once("../modelo/Enunciado.php");
 include_once("../modelo/PDFeval.php");
-include_once("../modelo/Docente.php");
+include_once("../modelo/Docente.php");		 
 
 class reporteEvaluacion
 {
@@ -19,10 +19,10 @@ class reporteEvaluacion
         $this->pdf->importar();
 	}
 
-	public function generarReporte($idDocente)
+	public function generarReporte($idDocente,$periodo)
 	{
 		$acta =  new ActaConcertacion();
-		$bool = $acta->evaluacionesDocente($idDocente);
+		$bool = $acta->evaluacionesDocente($idDocente,$periodo);
 
 		if((count($bool)) > 0)
 		{
@@ -100,6 +100,7 @@ class reporteEvaluacion
 				$resp = $pregunta->obtenerRespuestaEvaluacion($data);
 				$this->pdf->indicador14($resp[0]['respuesta']);
 
+				$this->pdf->agregarPagina();
 				$data['numeroPregunta'] = 27;
 				$resp = $pregunta->obtenerRespuestaEvaluacion($data);
 				$this->pdf->observaciones($resp[0]['respuesta']);

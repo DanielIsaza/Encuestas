@@ -113,10 +113,10 @@ Class ActaConcertacion extends Modelo
         return $datos;  
     }
 
-    public function evaluacionesDocente($idDocente)
+    public function evaluacionesDocente($idDocente,$periodo)
     {
       $sql = "SELECT idActaConcertacion FROM actaconcertacion join grupo on grupo.idGrupo=Grupo_idGrupo 
-          where grupo.Docente_idDocente = ".$idDocente." and numeroActaConcertacion = 3";
+          where grupo.Docente_idDocente = ".$idDocente." and ".$periodo." and numeroActaConcertacion = 3";
 
       $consulta = $this->query($sql);
       $datos = array(); 
